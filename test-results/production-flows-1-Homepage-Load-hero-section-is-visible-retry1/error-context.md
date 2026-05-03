@@ -1,0 +1,1443 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]: Grand Opening Today at 6:00 PM — Experience Medical Luxury
+      - generic [ref=e8]:
+        - navigation [ref=e10]:
+          - link "Brands" [ref=e12] [cursor=pointer]:
+            - /url: /brands
+            - text: Brands
+            - img [ref=e13]
+          - link "Skin Concerns" [ref=e16] [cursor=pointer]:
+            - /url: /skin-concerns
+            - text: Skin Concerns
+            - img [ref=e17]
+          - link "Best Sellers" [ref=e19] [cursor=pointer]:
+            - /url: /best-sellers
+          - link "Sale" [ref=e20] [cursor=pointer]:
+            - /url: /offers
+        - link "Asper" [ref=e22] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e23]: Asper
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - img [ref=e26]
+            - textbox "Search 5,000+ items..." [ref=e29]
+          - generic [ref=e31]:
+            - button "Consult Dr. Sami" [ref=e32] [cursor=pointer]:
+              - img [ref=e33]
+              - generic [ref=e36]: Dr. Sami
+              - generic [ref=e37]: Wellness
+            - button "Chat with Ms. Zain" [ref=e39] [cursor=pointer]:
+              - img [ref=e40]
+              - generic [ref=e42]: Ms. Zain
+              - generic [ref=e43]: Beauty
+          - link "Sign in" [ref=e44] [cursor=pointer]:
+            - /url: /auth
+            - img [ref=e45]
+          - button "Wishlist" [ref=e48] [cursor=pointer]:
+            - img [ref=e49]
+          - button "Cart" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+            - generic [ref=e55]: "0"
+          - button "Toggle language" [ref=e56] [cursor=pointer]:
+            - img [ref=e57]
+            - generic [ref=e60]: العربية
+      - navigation "Browse by category" [ref=e61]:
+        - list [ref=e62]:
+          - listitem [ref=e63]:
+            - link "Skincare" [ref=e64] [cursor=pointer]:
+              - /url: /products?category=skincare
+              - img [ref=e65]
+              - generic [ref=e69]: Skincare
+          - listitem [ref=e70]:
+            - link "Vitamins" [ref=e71] [cursor=pointer]:
+              - /url: /products?category=vitamins
+              - img [ref=e72]
+              - generic [ref=e77]: Vitamins
+          - listitem [ref=e78]:
+            - link "Prescriptions" [ref=e79] [cursor=pointer]:
+              - /url: /products?category=prescriptions
+              - img [ref=e80]
+              - generic [ref=e84]: Prescriptions
+          - listitem [ref=e85]:
+            - link "Mother & Baby" [ref=e86] [cursor=pointer]:
+              - /url: /mom-baby
+              - img [ref=e87]
+              - generic [ref=e91]: Mother & Baby
+          - listitem [ref=e92]:
+            - link "Personal Care" [ref=e93] [cursor=pointer]:
+              - /url: /products?category=personal-care
+              - img [ref=e94]
+              - generic [ref=e99]: Personal Care
+          - listitem [ref=e100]:
+            - link "First Aid" [ref=e101] [cursor=pointer]:
+              - /url: /products?category=first-aid
+              - img [ref=e102]
+              - generic [ref=e106]: First Aid
+          - listitem [ref=e107]:
+            - link "Oral Care" [ref=e108] [cursor=pointer]:
+              - /url: /products?category=oral-care
+              - img [ref=e109]
+              - generic [ref=e113]: Oral Care
+          - listitem [ref=e114]:
+            - link "Men's Health" [ref=e115] [cursor=pointer]:
+              - /url: /products?category=mens-health
+              - img [ref=e116]
+              - generic [ref=e119]: Men's Health
+          - listitem [ref=e120]:
+            - link "Beauty" [ref=e121] [cursor=pointer]:
+              - /url: /products?category=beauty
+              - img [ref=e122]
+              - generic [ref=e128]: Beauty
+          - listitem [ref=e129]:
+            - link "Wellness" [ref=e130] [cursor=pointer]:
+              - /url: /products?category=wellness
+              - img [ref=e131]
+              - generic [ref=e136]: Wellness
+    - main [ref=e137]:
+      - generic [ref=e143]:
+        - generic [ref=e144]:
+          - generic [ref=e146]:
+            - img [ref=e147]
+            - text: Curated by Pharmacists · Jordan's No.1 Beauty Destination
+          - heading "Where Science Meets Sanctuary." [level=1] [ref=e149]:
+            - text: Where Science
+            - generic [ref=e150]: Meets Sanctuary.
+          - paragraph [ref=e152]: A pharmacist-approved luxury collection that blends clinical efficacy with spa-grade indulgence. Because your skin deserves both.
+          - generic [ref=e153]:
+            - link "Explore the Collection" [ref=e154] [cursor=pointer]:
+              - /url: /shop
+              - text: Explore the Collection
+              - img [ref=e155]
+            - link "AI Skin Analysis" [ref=e157] [cursor=pointer]:
+              - /url: /skin-concerns
+              - img [ref=e158]
+              - text: AI Skin Analysis
+          - generic [ref=e169]:
+            - generic [ref=e170]:
+              - generic [ref=e171]: 10,000+
+              - generic [ref=e172]: Products
+            - generic [ref=e173]:
+              - generic [ref=e174]: 50+
+              - generic [ref=e175]: Brands
+            - generic [ref=e176]:
+              - generic [ref=e177]: 100%
+              - generic [ref=e178]: Pharmacist-Curated
+        - generic [ref=e180]:
+          - generic [ref=e182] [cursor=pointer]:
+            - img [ref=e183]
+            - generic [ref=e187]: Pharmacist Picks
+          - generic [ref=e189] [cursor=pointer]:
+            - img [ref=e190]
+            - generic [ref=e194]: Morning Ritual
+          - generic [ref=e196] [cursor=pointer]:
+            - img [ref=e197]
+            - generic [ref=e201]: Authentic Quality
+      - generic [ref=e206]:
+        - link "Dr. Sami's Domain The Clinical Side Discover Your Ideal Serum Pharmacist-curated formulas backed by clinical evidence. Explore Clinical" [ref=e207] [cursor=pointer]:
+          - /url: /shop?category=Clinical+Serums+%26+Actives
+          - generic [ref=e209]:
+            - generic [ref=e210]:
+              - img [ref=e211]
+              - generic [ref=e215]: Dr. Sami's Domain
+            - generic [ref=e216]: The Clinical Side
+            - heading "Discover Your Ideal Serum" [level=2] [ref=e217]
+            - paragraph [ref=e218]: Pharmacist-curated formulas backed by clinical evidence.
+            - generic [ref=e219]:
+              - text: Explore Clinical
+              - img [ref=e220]
+        - link "Ms. Zain's Domain The Luxury Side Elevated By Elegance Luxury daily rituals that transform skincare into self-care. Shop Luxury" [ref=e222] [cursor=pointer]:
+          - /url: /shop?category=Evening+Radiance+%26+Glamour
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - img [ref=e226]
+              - generic [ref=e228]: Ms. Zain's Domain
+            - generic [ref=e229]: The Luxury Side
+            - heading "Elevated By Elegance" [level=2] [ref=e230]
+            - paragraph [ref=e231]: Luxury daily rituals that transform skincare into self-care.
+            - generic [ref=e232]:
+              - text: Shop Luxury
+              - img [ref=e233]
+      - generic [ref=e237]:
+        - generic [ref=e238]: The 3-Click Solution
+        - heading "What is your skin profile?" [level=2] [ref=e239]
+        - generic [ref=e240]:
+          - button "Oily / Acne-Prone" [ref=e241] [cursor=pointer]:
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - img [ref=e244]
+                - generic [ref=e246]: Oily / Acne-Prone
+              - img [ref=e247]
+          - button "Dry / Dehydrated" [ref=e250] [cursor=pointer]:
+            - generic [ref=e251]:
+              - generic [ref=e252]:
+                - img [ref=e253]
+                - generic [ref=e256]: Dry / Dehydrated
+              - img [ref=e257]
+          - button "Sensitive / Redness" [ref=e260] [cursor=pointer]:
+            - generic [ref=e261]:
+              - generic [ref=e262]:
+                - img [ref=e263]
+                - generic [ref=e265]: Sensitive / Redness
+              - img [ref=e266]
+          - button "Normal / Balanced" [ref=e269] [cursor=pointer]:
+            - generic [ref=e270]:
+              - generic [ref=e271]:
+                - img [ref=e272]
+                - generic [ref=e274]: Normal / Balanced
+              - img [ref=e275]
+      - generic [ref=e278]:
+        - paragraph [ref=e280]: Authorized Retailer
+        - generic [ref=e281]:
+          - generic [ref=e282]:
+            - link "Eucerin" [ref=e283] [cursor=pointer]:
+              - /url: /shop?brand=Eucerin
+              - img "Eucerin logo" [ref=e284]
+            - link "La Roche-Posay" [ref=e285] [cursor=pointer]:
+              - /url: /shop?brand=La%20Roche-Posay
+              - img "La Roche-Posay logo" [ref=e286]
+            - link "CeraVe" [ref=e287] [cursor=pointer]:
+              - /url: /shop?brand=CeraVe
+              - img "CeraVe logo" [ref=e288]
+            - link "Bioderma" [ref=e289] [cursor=pointer]:
+              - /url: /shop?brand=Bioderma
+              - img "Bioderma logo" [ref=e290]
+            - link "Vichy" [ref=e291] [cursor=pointer]:
+              - /url: /shop?brand=Vichy
+              - img "Vichy logo" [ref=e292]
+            - link "Sesderma" [ref=e293] [cursor=pointer]:
+              - /url: /shop?brand=Sesderma
+              - img "Sesderma logo" [ref=e294]
+            - link "COSRX" [ref=e295] [cursor=pointer]:
+              - /url: /shop?brand=COSRX
+              - img "COSRX logo" [ref=e296]
+            - link "Kérastase" [ref=e297] [cursor=pointer]:
+              - /url: /shop?brand=Kerastase
+              - img "Kérastase logo" [ref=e298]
+            - link "Guerlain" [ref=e299] [cursor=pointer]:
+              - /url: /shop?brand=Guerlain
+              - img "Guerlain logo" [ref=e300]
+            - link "Nuxe" [ref=e301] [cursor=pointer]:
+              - /url: /shop?brand=Nuxe
+              - img "Nuxe logo" [ref=e302]
+          - generic [ref=e303]:
+            - link "Eucerin" [ref=e304] [cursor=pointer]:
+              - /url: /shop?brand=Eucerin
+              - img "Eucerin logo" [ref=e305]
+            - link "La Roche-Posay" [ref=e306] [cursor=pointer]:
+              - /url: /shop?brand=La%20Roche-Posay
+              - img "La Roche-Posay logo" [ref=e307]
+            - link "CeraVe" [ref=e308] [cursor=pointer]:
+              - /url: /shop?brand=CeraVe
+              - img "CeraVe logo" [ref=e309]
+            - link "Bioderma" [ref=e310] [cursor=pointer]:
+              - /url: /shop?brand=Bioderma
+              - img "Bioderma logo" [ref=e311]
+            - link "Vichy" [ref=e312] [cursor=pointer]:
+              - /url: /shop?brand=Vichy
+              - img "Vichy logo" [ref=e313]
+            - link "Sesderma" [ref=e314] [cursor=pointer]:
+              - /url: /shop?brand=Sesderma
+              - img "Sesderma logo" [ref=e315]
+            - link "COSRX" [ref=e316] [cursor=pointer]:
+              - /url: /shop?brand=COSRX
+              - img "COSRX logo" [ref=e317]
+            - link "Kérastase" [ref=e318] [cursor=pointer]:
+              - /url: /shop?brand=Kerastase
+              - img "Kérastase logo" [ref=e319]
+            - link "Guerlain" [ref=e320] [cursor=pointer]:
+              - /url: /shop?brand=Guerlain
+              - img "Guerlain logo" [ref=e321]
+            - link "Nuxe" [ref=e322] [cursor=pointer]:
+              - /url: /shop?brand=Nuxe
+              - img "Nuxe logo" [ref=e323]
+      - generic [ref=e325]:
+        - img "Morning Spa — Clinical Precision. Eternal Elegance. Vichy Minéral 89" [ref=e327]
+        - generic [ref=e328]:
+          - generic [ref=e329]: The Morning Spa Ritual
+          - paragraph [ref=e330]: Our deepest dermatological research provides intensive hydration. Discover your ideal mineral balance.
+          - generic [ref=e331]:
+            - generic [ref=e332]: Hyaluronic Acid
+            - generic [ref=e334]: 89% Volcanic Water
+            - generic [ref=e336]: 48h Hydration
+          - link "Discover Now" [ref=e338] [cursor=pointer]:
+            - /url: /shop?brand=Vichy
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - generic [ref=e343]: Catalogue Strategy
+          - heading "Science Meets Style" [level=2] [ref=e344]
+          - paragraph [ref=e345]: From clinical prescriptions to everyday beauty — everything you need under one roof
+        - generic [ref=e347]:
+          - link "Vichy" [ref=e349] [cursor=pointer]:
+            - /url: /shop?brand=Vichy
+            - img "Vichy logo" [ref=e350]
+          - link "La Roche-Posay" [ref=e352] [cursor=pointer]:
+            - /url: /shop?brand=La%20Roche-Posay
+            - img "La Roche-Posay logo" [ref=e353]
+          - generic [ref=e354]:
+            - link "Bioderma":
+              - /url: /shop?brand=Bioderma
+              - img "Bioderma logo"
+          - generic [ref=e355]:
+            - link "CeraVe":
+              - /url: /shop?brand=CeraVe
+              - img "CeraVe logo"
+          - link "Eucerin" [ref=e357] [cursor=pointer]:
+            - /url: /shop?brand=Eucerin
+            - img "Eucerin logo" [ref=e358]
+          - generic [ref=e359]:
+            - link "Sesderma":
+              - /url: /shop?brand=Sesderma
+              - img "Sesderma logo"
+          - generic:
+            - link "Maybelline":
+              - /url: /shop?brand=Maybelline
+              - img "Maybelline logo"
+          - generic:
+            - link "Rimmel":
+              - /url: /shop?brand=Rimmel
+              - img "Rimmel logo"
+          - generic:
+            - link "L'Oréal":
+              - /url: /shop?brand=L'Oreal
+              - img "L'Oréal logo"
+          - generic:
+            - link "Guerlain":
+              - /url: /shop?brand=Guerlain
+              - img "Guerlain logo"
+          - generic:
+            - link "Nuxe":
+              - /url: /shop?brand=Nuxe
+              - img "Nuxe logo"
+          - generic:
+            - link "Kérastase":
+              - /url: /shop?brand=Kerastase
+              - img "Kérastase logo"
+      - generic [ref=e363]:
+        - generic [ref=e364]:
+          - generic [ref=e365]: Digital Consultation
+          - heading "Select Your Path." [level=2] [ref=e366]
+        - generic [ref=e368]:
+          - button "Clinical Path The Clinical Path Advanced Dermo-Solutions" [ref=e370] [cursor=pointer]:
+            - generic [ref=e371]:
+              - img "Clinical Path" [ref=e372]
+              - generic [ref=e374]:
+                - img [ref=e376]
+                - heading "The Clinical Path" [level=3] [ref=e380]
+                - paragraph [ref=e381]: Advanced Dermo-Solutions
+          - button "Luxury Path The Aesthetic Path Luxury Daily Rituals" [ref=e384] [cursor=pointer]:
+            - generic [ref=e385]:
+              - img "Luxury Path" [ref=e386]
+              - generic [ref=e388]:
+                - img [ref=e390]
+                - heading "The Aesthetic Path" [level=3] [ref=e392]
+                - paragraph [ref=e393]: Luxury Daily Rituals
+      - generic [ref=e397]:
+        - generic [ref=e398]:
+          - generic [ref=e399]: Targeted Skincare Protocols
+          - heading "Your Skincare Protocols" [level=2] [ref=e400]
+          - paragraph [ref=e401]: Precision-crafted routines featuring authentic dermo-cosmetics, designed to address your specific skin concerns with clinical efficacy.
+        - generic [ref=e406]:
+          - link "The Acne Protocol The Acne Protocol Salicylic Acid · Niacinamide · Zinc View Protocol →" [ref=e408] [cursor=pointer]:
+            - /url: /concerns/acne
+            - img "The Acne Protocol" [ref=e409]
+            - generic [ref=e411]:
+              - heading "The Acne Protocol" [level=3] [ref=e412]
+              - paragraph: Salicylic Acid · Niacinamide · Zinc
+              - generic: View Protocol →
+          - link "Cellular Repair Cellular Repair Retinol · Peptides · Ceramides View Protocol →" [ref=e414] [cursor=pointer]:
+            - /url: /concerns/anti-aging
+            - img "Cellular Repair" [ref=e415]
+            - generic [ref=e417]:
+              - heading "Cellular Repair" [level=3] [ref=e418]
+              - paragraph: Retinol · Peptides · Ceramides
+              - generic: View Protocol →
+          - link "Barrier Defense Barrier Defense Ceramides · Squalane · Panthenol View Protocol →" [ref=e420] [cursor=pointer]:
+            - /url: /concerns/sensitivity
+            - img "Barrier Defense" [ref=e421]
+            - generic [ref=e423]:
+              - heading "Barrier Defense" [level=3] [ref=e424]
+              - paragraph: Ceramides · Squalane · Panthenol
+              - generic: View Protocol →
+          - link "Radiance Revival Radiance Revival Vitamin C · AHA · Arbutin View Protocol →" [ref=e426] [cursor=pointer]:
+            - /url: /concerns/pigmentation
+            - img "Radiance Revival" [ref=e427]
+            - generic [ref=e429]:
+              - heading "Radiance Revival" [level=3] [ref=e430]
+              - paragraph: Vitamin C · AHA · Arbutin
+              - generic: View Protocol →
+          - link "Sun Shield Sun Shield SPF 50+ · Tinosorb · Vitamin E View Protocol →" [ref=e432] [cursor=pointer]:
+            - /url: /collections/suncare
+            - img "Sun Shield" [ref=e433]
+            - generic [ref=e435]:
+              - heading "Sun Shield" [level=3] [ref=e436]
+              - paragraph: SPF 50+ · Tinosorb · Vitamin E
+              - generic: View Protocol →
+          - link "Deep Hydration Deep Hydration Hyaluronic Acid · B5 · Aloe View Protocol →" [ref=e438] [cursor=pointer]:
+            - /url: /concerns/dryness
+            - img "Deep Hydration" [ref=e439]
+            - generic [ref=e441]:
+              - heading "Deep Hydration" [level=3] [ref=e442]
+              - paragraph: Hyaluronic Acid · B5 · Aloe
+              - generic: View Protocol →
+      - generic [ref=e445]:
+        - generic [ref=e446]:
+          - paragraph [ref=e447]: Pharmacist Approved
+          - heading "Curated for You" [level=2] [ref=e448]
+        - generic [ref=e450]:
+          - generic [ref=e451]:
+            - link "Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush View Toggle wishlist" [ref=e452] [cursor=pointer]:
+              - /url: /product/pierrot-soft-whitening-activate-charcoal-black-white-toothbrush
+              - generic [ref=e453]:
+                - generic [ref=e454]:
+                  - img [ref=e456]
+                  - img "Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush" [ref=e458]
+                - button "View" [ref=e461]:
+                  - img [ref=e462]
+                  - text: View
+                - button "Toggle wishlist" [ref=e465]:
+                  - img [ref=e466]
+            - generic [ref=e468]:
+              - paragraph [ref=e469]: Pierrot
+              - heading "Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush" [level=3] [ref=e470]
+              - generic [ref=e472]: JOD 4.60
+          - generic [ref=e473]:
+            - link "Chicco Electric Toothbrush Heads 2 Pcs View Toggle wishlist" [ref=e474] [cursor=pointer]:
+              - /url: /product/chicco-electric-toothbrush-heads-2-pcs
+              - generic [ref=e475]:
+                - generic:
+                  - img "Chicco Electric Toothbrush Heads 2 Pcs"
+                - button "View" [ref=e478]:
+                  - img [ref=e479]
+                  - text: View
+                - button "Toggle wishlist" [ref=e482]:
+                  - img [ref=e483]
+            - generic [ref=e485]:
+              - paragraph [ref=e486]: Chicco
+              - heading "Chicco Electric Toothbrush Heads 2 Pcs" [level=3] [ref=e487]
+              - generic [ref=e489]: JOD 5.25
+          - generic [ref=e490]:
+            - link "Optimal Cleo-dent Premium Soft Toothbrush View Toggle wishlist" [ref=e491] [cursor=pointer]:
+              - /url: /product/optimal-cleo-dent-premium-soft-toothbrush
+              - generic [ref=e492]:
+                - generic:
+                  - img "Optimal Cleo-dent Premium Soft Toothbrush"
+                - button "View" [ref=e495]:
+                  - img [ref=e496]
+                  - text: View
+                - button "Toggle wishlist" [ref=e499]:
+                  - img [ref=e500]
+            - generic [ref=e502]:
+              - paragraph [ref=e503]: Optimal
+              - heading "Optimal Cleo-dent Premium Soft Toothbrush" [level=3] [ref=e504]
+              - generic [ref=e506]: JOD 1.90
+          - generic [ref=e507]:
+            - link "Optimal Cleo-dent Junior Orthodontic Toothbrush View Toggle wishlist" [ref=e508] [cursor=pointer]:
+              - /url: /product/optimal-cleo-dent-junior-orthodontic-tooth-brush
+              - generic [ref=e509]:
+                - generic:
+                  - img "Optimal Cleo-dent Junior Orthodontic Toothbrush"
+                - button "View" [ref=e512]:
+                  - img [ref=e513]
+                  - text: View
+                - button "Toggle wishlist" [ref=e516]:
+                  - img [ref=e517]
+            - generic [ref=e519]:
+              - paragraph [ref=e520]: Optimal
+              - heading "Optimal Cleo-dent Junior Orthodontic Toothbrush" [level=3] [ref=e521]
+              - generic [ref=e523]: JOD 2.50
+          - generic [ref=e524]:
+            - link "Optimal Cleo-dent Orthodontic Toothbrush View Toggle wishlist" [ref=e525] [cursor=pointer]:
+              - /url: /product/optimal-cleo-dent-orthodontic-tooth-brush
+              - generic [ref=e526]:
+                - generic:
+                  - img "Optimal Cleo-dent Orthodontic Toothbrush"
+                - button "View" [ref=e529]:
+                  - img [ref=e530]
+                  - text: View
+                - button "Toggle wishlist" [ref=e533]:
+                  - img [ref=e534]
+            - generic [ref=e536]:
+              - paragraph [ref=e537]: Optimal
+              - heading "Optimal Cleo-dent Orthodontic Toothbrush" [level=3] [ref=e538]
+              - generic [ref=e540]: JOD 2.50
+          - generic [ref=e541]:
+            - link "Optimal Cleo-dent Flex Zone Toothbrush Soft View Toggle wishlist" [ref=e542] [cursor=pointer]:
+              - /url: /product/optimal-cleo-dent-flex-zone-tooth-brush-soft
+              - generic [ref=e543]:
+                - generic:
+                  - img "Optimal Cleo-dent Flex Zone Toothbrush Soft"
+                - button "View" [ref=e546]:
+                  - img [ref=e547]
+                  - text: View
+                - button "Toggle wishlist" [ref=e550]:
+                  - img [ref=e551]
+            - generic [ref=e553]:
+              - paragraph [ref=e554]: Optimal
+              - heading "Optimal Cleo-dent Flex Zone Toothbrush Soft" [level=3] [ref=e555]
+              - generic [ref=e557]: JOD 2.80
+          - generic [ref=e558]:
+            - link "Optimal Cleo-dent Gum Protect Toothbrush Soft View Toggle wishlist" [ref=e559] [cursor=pointer]:
+              - /url: /product/optimal-cleo-dent-gum-protect-tooth-brush-soft
+              - generic [ref=e560]:
+                - generic:
+                  - img "Optimal Cleo-dent Gum Protect Toothbrush Soft"
+                - button "View" [ref=e563]:
+                  - img [ref=e564]
+                  - text: View
+                - button "Toggle wishlist" [ref=e567]:
+                  - img [ref=e568]
+            - generic [ref=e570]:
+              - paragraph [ref=e571]: Optimal
+              - heading "Optimal Cleo-dent Gum Protect Toothbrush Soft" [level=3] [ref=e572]
+              - generic [ref=e574]: JOD 2.20
+          - generic [ref=e575]:
+            - link "Remescar Herpatch Aphthae ( Mouth Ulcer Gel) View Toggle wishlist" [ref=e576] [cursor=pointer]:
+              - /url: /product/remescar-herpatch-aphthae-mouth-ulcer-gel
+              - generic [ref=e577]:
+                - generic:
+                  - img "Remescar Herpatch Aphthae ( Mouth Ulcer Gel)"
+                - button "View" [ref=e580]:
+                  - img [ref=e581]
+                  - text: View
+                - button "Toggle wishlist" [ref=e584]:
+                  - img [ref=e585]
+            - generic [ref=e587]:
+              - paragraph [ref=e588]: Remescar
+              - heading "Remescar Herpatch Aphthae ( Mouth Ulcer Gel)" [level=3] [ref=e589]
+              - generic [ref=e591]: JOD 6.40
+        - link "View All Products" [ref=e593] [cursor=pointer]:
+          - /url: /shop
+          - text: View All Products
+          - img [ref=e594]
+      - generic [ref=e597]:
+        - heading "Curated Clinical Solutions" [level=2] [ref=e598]
+        - generic [ref=e599]:
+          - article [ref=e600]:
+            - link [ref=e601] [cursor=pointer]:
+              - /url: /product/farlin-comb-brush-set-1
+              - generic [ref=e603]:
+                - img [ref=e605]
+                - img [ref=e607]
+            - paragraph [ref=e608]: Baby Farlin · Concern_Hydration
+            - link "Farlin Comb & Brush Set" [ref=e609] [cursor=pointer]:
+              - /url: /product/farlin-comb-brush-set-1
+              - heading "Farlin Comb & Brush Set" [level=3] [ref=e610]
+            - generic [ref=e611]:
+              - generic [ref=e613]: JOD 4.90
+              - button "Quick Add" [ref=e614] [cursor=pointer]
+          - article [ref=e615]:
+            - link [ref=e616] [cursor=pointer]:
+              - /url: /product/farlin-straw-drinking-cup-150-ml
+              - generic [ref=e618]:
+                - img [ref=e620]
+                - img [ref=e622]
+            - paragraph [ref=e623]: Baby Farlin · Concern_Hydration
+            - link "Farlin Straw Drinking Cup 150ml" [ref=e624] [cursor=pointer]:
+              - /url: /product/farlin-straw-drinking-cup-150-ml
+              - heading "Farlin Straw Drinking Cup 150ml" [level=3] [ref=e625]
+            - generic [ref=e626]:
+              - generic [ref=e628]: JOD 7.70
+              - button "Quick Add" [ref=e629] [cursor=pointer]
+          - article [ref=e630]:
+            - link [ref=e631] [cursor=pointer]:
+              - /url: /product/farlin-gulu-straw-drinking-cup-120ml
+              - generic [ref=e633]:
+                - img [ref=e635]
+                - img [ref=e637]
+            - paragraph [ref=e638]: Baby Farlin · Concern_Hydration
+            - link "Farlin Gulu Straw Drinking Cup 120ml" [ref=e639] [cursor=pointer]:
+              - /url: /product/farlin-gulu-straw-drinking-cup-120ml
+              - heading "Farlin Gulu Straw Drinking Cup 120ml" [level=3] [ref=e640]
+            - generic [ref=e641]:
+              - generic [ref=e643]: JOD 5.80
+              - button "Quick Add" [ref=e644] [cursor=pointer]
+          - article [ref=e645]:
+            - link [ref=e646] [cursor=pointer]:
+              - /url: /product/farlin-silicone-brush-set
+              - generic [ref=e648]:
+                - img [ref=e650]
+                - img [ref=e652]
+            - paragraph [ref=e653]: Baby Farlin · Concern_Hydration
+            - link "Farlin Silicone Brush Set" [ref=e654] [cursor=pointer]:
+              - /url: /product/farlin-silicone-brush-set
+              - heading "Farlin Silicone Brush Set" [level=3] [ref=e655]
+            - generic [ref=e656]:
+              - generic [ref=e658]: JOD 5.90
+              - button "Quick Add" [ref=e659] [cursor=pointer]
+          - article [ref=e660]:
+            - link [ref=e661] [cursor=pointer]:
+              - /url: /product/farlin-bottle-nipple-brushes-2
+              - generic [ref=e663]:
+                - img [ref=e665]
+                - img [ref=e667]
+            - paragraph [ref=e668]: Baby Farlin · Concern_Hydration
+            - link "Farlin Bottle & Nipple Brushes" [ref=e669] [cursor=pointer]:
+              - /url: /product/farlin-bottle-nipple-brushes-2
+              - heading "Farlin Bottle & Nipple Brushes" [level=3] [ref=e670]
+            - generic [ref=e671]:
+              - generic [ref=e673]: JOD 4.00
+              - button "Quick Add" [ref=e674] [cursor=pointer]
+          - article [ref=e675]:
+            - link [ref=e676] [cursor=pointer]:
+              - /url: /product/farlin-nasal-aspirator
+              - generic [ref=e678]:
+                - img [ref=e680]
+                - img [ref=e682]
+            - paragraph [ref=e683]: Baby Farlin · Concern_Hydration
+            - link "Farlin Nasal Aspirator" [ref=e684] [cursor=pointer]:
+              - /url: /product/farlin-nasal-aspirator
+              - heading "Farlin Nasal Aspirator" [level=3] [ref=e685]
+            - generic [ref=e686]:
+              - generic [ref=e688]: JOD 3.60
+              - button "Quick Add" [ref=e689] [cursor=pointer]
+          - article [ref=e690]:
+            - link [ref=e691] [cursor=pointer]:
+              - /url: /product/farlin-parent-child-nasal-aspirator
+              - generic [ref=e693]:
+                - img [ref=e695]
+                - img [ref=e697]
+            - paragraph [ref=e698]: Baby Farlin · Concern_Hydration
+            - link "Farlin Parent & Child Nasal Aspirator" [ref=e699] [cursor=pointer]:
+              - /url: /product/farlin-parent-child-nasal-aspirator
+              - heading "Farlin Parent & Child Nasal Aspirator" [level=3] [ref=e700]
+            - generic [ref=e701]:
+              - generic [ref=e703]: JOD 4.30
+              - button "Quick Add" [ref=e704] [cursor=pointer]
+          - article [ref=e705]:
+            - link [ref=e706] [cursor=pointer]:
+              - /url: /product/farlin-milk-powder-container-1
+              - generic [ref=e708]:
+                - img [ref=e710]
+                - img [ref=e712]
+            - paragraph [ref=e713]: Baby Farlin · Concern_Hydration
+            - link "Farlin Milk Powder Container" [ref=e714] [cursor=pointer]:
+              - /url: /product/farlin-milk-powder-container-1
+              - heading "Farlin Milk Powder Container" [level=3] [ref=e715]
+            - generic [ref=e716]:
+              - generic [ref=e718]: JOD 3.00
+              - button "Quick Add" [ref=e719] [cursor=pointer]
+      - generic [ref=e722]:
+        - generic [ref=e723]:
+          - generic [ref=e724]: Curated Bestsellers
+          - heading "Expert-Curated Picks" [level=2] [ref=e725]
+        - generic [ref=e726]:
+          - button "Dr. Sami's Clinical Picks" [ref=e727] [cursor=pointer]:
+            - img [ref=e728]
+            - generic [ref=e732]: Dr. Sami's Clinical Picks
+          - button "Ms. Zain's Luxury Edits" [ref=e733] [cursor=pointer]:
+            - img [ref=e734]
+            - generic [ref=e736]: Ms. Zain's Luxury Edits
+        - generic [ref=e737]:
+          - button "Skincare" [ref=e738] [cursor=pointer]
+          - button "Supplements" [ref=e739] [cursor=pointer]
+          - button "Sun Protection" [ref=e740] [cursor=pointer]
+          - button "Baby & Mom" [ref=e741] [cursor=pointer]
+        - generic [ref=e744]:
+          - button "Previous" [ref=e745] [cursor=pointer]:
+            - img [ref=e746]
+          - button "Next" [ref=e748] [cursor=pointer]:
+            - img [ref=e749]
+        - link "View All Products" [ref=e769] [cursor=pointer]:
+          - /url: /shop
+      - generic [ref=e773]:
+        - generic [ref=e774]:
+          - generic [ref=e775]:
+            - img [ref=e776]
+            - generic [ref=e778]: AI-Guided Discovery
+          - heading "What's Your Skin Ambition?" [level=2] [ref=e779]
+          - paragraph [ref=e780]: Choose your goal and Ms. Zain will curate a personalized regimen for you.
+        - generic [ref=e781]:
+          - button "✨ Clear Skin" [ref=e782] [cursor=pointer]:
+            - generic [ref=e783]: ✨
+            - text: Clear Skin
+          - button "💧 Deep Hydration" [ref=e784] [cursor=pointer]:
+            - generic [ref=e785]: 💧
+            - text: Deep Hydration
+          - button "🌟 Anti-Aging" [ref=e786] [cursor=pointer]:
+            - generic [ref=e787]: 🌟
+            - text: Anti-Aging
+          - button "🌿 Calm & Soothe" [ref=e788] [cursor=pointer]:
+            - generic [ref=e789]: 🌿
+            - text: Calm & Soothe
+          - button "🌸 Even Tone" [ref=e790] [cursor=pointer]:
+            - generic [ref=e791]: 🌸
+            - text: Even Tone
+          - button "☀️ Bright Glow" [ref=e792] [cursor=pointer]:
+            - generic [ref=e793]: ☀️
+            - text: Bright Glow
+          - button "🛡️ Sun Shield" [ref=e794] [cursor=pointer]:
+            - generic [ref=e795]: 🛡️
+            - text: Sun Shield
+          - button "🩹 Reduce Redness" [ref=e796] [cursor=pointer]:
+            - generic [ref=e797]: 🩹
+            - text: Reduce Redness
+          - button "👁️ Bright Eyes" [ref=e798] [cursor=pointer]:
+            - generic [ref=e799]: 👁️
+            - text: Bright Eyes
+          - button "🧴 Oil Control" [ref=e800] [cursor=pointer]:
+            - generic [ref=e801]: 🧴
+            - text: Oil Control
+        - generic [ref=e802]:
+          - generic [ref=e804]:
+            - generic [ref=e806]:
+              - img [ref=e808]
+              - generic [ref=e810]: Ms. Zain's Recommendation
+            - heading "✨ Clear Skin" [level=3] [ref=e811]
+            - paragraph [ref=e812]: Ms. Zain recommends a gentle, non-comedogenic approach. These products are selected for their clinically-proven ability to reduce breakouts without stripping your skin's natural moisture barrier.
+            - link "Start Your Consultation" [ref=e813] [cursor=pointer]:
+              - /url: /skin-concerns
+              - text: Start Your Consultation
+              - img [ref=e814]
+          - generic [ref=e817]:
+            - link "Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml Asper Beauty Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml 21.00 JOD" [ref=e818] [cursor=pointer]:
+              - /url: /product/bioderma-sebium-global-intense-purifying-care-for-acne-prone-skin-30ml
+              - img "Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml" [ref=e820]
+              - generic [ref=e821]:
+                - paragraph [ref=e822]: Asper Beauty
+                - heading "Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml" [level=4] [ref=e823]
+                - paragraph [ref=e824]: 21.00 JOD
+            - link "Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml Bioderma Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml 21.00 JOD" [ref=e825] [cursor=pointer]:
+              - /url: /product/bioderma-intense-purifying-care-for-acne-prone-skin-30-ml
+              - img "Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml" [ref=e827]
+              - generic [ref=e828]:
+                - paragraph [ref=e829]: Bioderma
+                - heading "Bioderma Sebium Global Intense Purifying Care For Acne Prone Skin 30ml" [level=4] [ref=e830]
+                - paragraph [ref=e831]: 21.00 JOD
+            - link "Beesline Propolis Facial Wash For Oily And Acne Prone Skin 250ml Beesline Beesline Propolis Facial Wash For Oily And Acne Prone Skin 250ml 8.90 JOD" [ref=e832] [cursor=pointer]:
+              - /url: /product/beesline-propolis-facial-wash-for-oily-and-acne-prone-skin-250ml
+              - img "Beesline Propolis Facial Wash For Oily And Acne Prone Skin 250ml" [ref=e834]
+              - generic [ref=e835]:
+                - paragraph [ref=e836]: Beesline
+                - heading "Beesline Propolis Facial Wash For Oily And Acne Prone Skin 250ml" [level=4] [ref=e837]
+                - paragraph [ref=e838]: 8.90 JOD
+            - link "Novaclear Acne Cream 40ml Novaclear Novaclear Acne Cream 40ml 13.20 JOD" [ref=e839] [cursor=pointer]:
+              - /url: /product/novaclear-acne-cream-40ml
+              - img "Novaclear Acne Cream 40ml" [ref=e841]
+              - generic [ref=e842]:
+                - paragraph [ref=e843]: Novaclear
+                - heading "Novaclear Acne Cream 40ml" [level=4] [ref=e844]
+                - paragraph [ref=e845]: 13.20 JOD
+            - link "Novaclear Acne Facial Foam 100ml Novaclear Novaclear Acne Facial Foam 100ml 11.40 JOD" [ref=e846] [cursor=pointer]:
+              - /url: /product/novaclear-acne-facial-foam-100ml
+              - img "Novaclear Acne Facial Foam 100ml" [ref=e848]
+              - generic [ref=e849]:
+                - paragraph [ref=e850]: Novaclear
+                - heading "Novaclear Acne Facial Foam 100ml" [level=4] [ref=e851]
+                - paragraph [ref=e852]: 11.40 JOD
+            - link "Garnier 8hr Acne Strip Invisible Hydrocolloid 22 Patches Garnier Garnier 8hr Acne Strip Invisible Hydrocolloid 22 Patches 5.40 JOD" [ref=e853] [cursor=pointer]:
+              - /url: /product/garnier-8hr-acne-strip-invisible-hydrocolloid-22-patches
+              - img "Garnier 8hr Acne Strip Invisible Hydrocolloid 22 Patches" [ref=e855]
+              - generic [ref=e856]:
+                - paragraph [ref=e857]: Garnier
+                - heading "Garnier 8hr Acne Strip Invisible Hydrocolloid 22 Patches" [level=4] [ref=e858]
+                - paragraph [ref=e859]: 5.40 JOD
+      - generic [ref=e863]:
+        - generic [ref=e864]:
+          - generic [ref=e865]:
+            - generic [ref=e866]: Most Loved
+            - heading "Bestsellers — Niche Approved" [level=2] [ref=e867]
+          - generic [ref=e868]:
+            - button "Previous" [ref=e869] [cursor=pointer]:
+              - img [ref=e870]
+            - button "Next" [ref=e872] [cursor=pointer]:
+              - img [ref=e873]
+        - generic [ref=e875]:
+          - link "Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush Pierrot Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush Add to Regimen" [ref=e877] [cursor=pointer]:
+            - /url: /product/pierrot-soft-whitening-activate-charcoal-black-white-toothbrush
+            - generic [ref=e878]:
+              - img "Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush" [ref=e880]
+              - generic [ref=e881]:
+                - paragraph [ref=e882]: Pierrot
+                - heading "Pierrot Soft Whitening Activate Charcoal Black & White Toothbrush" [level=3] [ref=e883]
+                - generic [ref=e884]:
+                  - text: Add to Regimen
+                  - img [ref=e885]
+          - link "Chicco Electric Toothbrush Heads 2 Pcs Chicco Chicco Electric Toothbrush Heads 2 Pcs Add to Regimen" [ref=e888] [cursor=pointer]:
+            - /url: /product/chicco-electric-toothbrush-heads-2-pcs
+            - generic [ref=e889]:
+              - img "Chicco Electric Toothbrush Heads 2 Pcs" [ref=e891]
+              - generic [ref=e892]:
+                - paragraph [ref=e893]: Chicco
+                - heading "Chicco Electric Toothbrush Heads 2 Pcs" [level=3] [ref=e894]
+                - generic [ref=e895]:
+                  - text: Add to Regimen
+                  - img [ref=e896]
+          - link "Optimal Cleo-dent Premium Soft Toothbrush Optimal Optimal Cleo-dent Premium Soft Toothbrush Add to Regimen" [ref=e899] [cursor=pointer]:
+            - /url: /product/optimal-cleo-dent-premium-soft-toothbrush
+            - generic [ref=e900]:
+              - img "Optimal Cleo-dent Premium Soft Toothbrush" [ref=e902]
+              - generic [ref=e903]:
+                - paragraph [ref=e904]: Optimal
+                - heading "Optimal Cleo-dent Premium Soft Toothbrush" [level=3] [ref=e905]
+                - generic [ref=e906]:
+                  - text: Add to Regimen
+                  - img [ref=e907]
+          - link "Optimal Cleo-dent Junior Orthodontic Toothbrush Optimal Optimal Cleo-dent Junior Orthodontic Toothbrush Add to Regimen" [ref=e910] [cursor=pointer]:
+            - /url: /product/optimal-cleo-dent-junior-orthodontic-tooth-brush
+            - generic [ref=e911]:
+              - img "Optimal Cleo-dent Junior Orthodontic Toothbrush" [ref=e913]
+              - generic [ref=e914]:
+                - paragraph [ref=e915]: Optimal
+                - heading "Optimal Cleo-dent Junior Orthodontic Toothbrush" [level=3] [ref=e916]
+                - generic [ref=e917]:
+                  - text: Add to Regimen
+                  - img [ref=e918]
+          - link "Optimal Cleo-dent Orthodontic Toothbrush Optimal Optimal Cleo-dent Orthodontic Toothbrush Add to Regimen" [ref=e921] [cursor=pointer]:
+            - /url: /product/optimal-cleo-dent-orthodontic-tooth-brush
+            - generic [ref=e922]:
+              - img "Optimal Cleo-dent Orthodontic Toothbrush" [ref=e924]
+              - generic [ref=e925]:
+                - paragraph [ref=e926]: Optimal
+                - heading "Optimal Cleo-dent Orthodontic Toothbrush" [level=3] [ref=e927]
+                - generic [ref=e928]:
+                  - text: Add to Regimen
+                  - img [ref=e929]
+          - link "Optimal Cleo-dent Flex Zone Toothbrush Soft Optimal Optimal Cleo-dent Flex Zone Toothbrush Soft Add to Regimen" [ref=e932] [cursor=pointer]:
+            - /url: /product/optimal-cleo-dent-flex-zone-tooth-brush-soft
+            - generic [ref=e933]:
+              - img "Optimal Cleo-dent Flex Zone Toothbrush Soft" [ref=e935]
+              - generic [ref=e936]:
+                - paragraph [ref=e937]: Optimal
+                - heading "Optimal Cleo-dent Flex Zone Toothbrush Soft" [level=3] [ref=e938]
+                - generic [ref=e939]:
+                  - text: Add to Regimen
+                  - img [ref=e940]
+          - link "Optimal Cleo-dent Gum Protect Toothbrush Soft Optimal Optimal Cleo-dent Gum Protect Toothbrush Soft Add to Regimen" [ref=e943] [cursor=pointer]:
+            - /url: /product/optimal-cleo-dent-gum-protect-tooth-brush-soft
+            - generic [ref=e944]:
+              - img "Optimal Cleo-dent Gum Protect Toothbrush Soft" [ref=e946]
+              - generic [ref=e947]:
+                - paragraph [ref=e948]: Optimal
+                - heading "Optimal Cleo-dent Gum Protect Toothbrush Soft" [level=3] [ref=e949]
+                - generic [ref=e950]:
+                  - text: Add to Regimen
+                  - img [ref=e951]
+          - link "Remescar Herpatch Aphthae ( Mouth Ulcer Gel) Remescar Remescar Herpatch Aphthae ( Mouth Ulcer Gel) Add to Regimen" [ref=e954] [cursor=pointer]:
+            - /url: /product/remescar-herpatch-aphthae-mouth-ulcer-gel
+            - generic [ref=e955]:
+              - img "Remescar Herpatch Aphthae ( Mouth Ulcer Gel)" [ref=e957]
+              - generic [ref=e958]:
+                - paragraph [ref=e959]: Remescar
+                - heading "Remescar Herpatch Aphthae ( Mouth Ulcer Gel)" [level=3] [ref=e960]
+                - generic [ref=e961]:
+                  - text: Add to Regimen
+                  - img [ref=e962]
+      - generic [ref=e967]:
+        - generic [ref=e968]:
+          - generic [ref=e969]:
+            - generic [ref=e970]: New Arrivals
+            - heading "Just Landed! What's New" [level=2] [ref=e971]
+          - generic [ref=e972]:
+            - button "Previous" [ref=e973] [cursor=pointer]:
+              - img [ref=e974]
+            - button "Next" [ref=e976] [cursor=pointer]:
+              - img [ref=e977]
+        - generic [ref=e979]:
+          - link "Farlin Comb & Brush Set Baby Farlin Farlin Comb & Brush Set Add to Regimen" [ref=e981] [cursor=pointer]:
+            - /url: /product/farlin-comb-brush-set-1
+            - generic [ref=e982]:
+              - img "Farlin Comb & Brush Set" [ref=e984]
+              - generic [ref=e985]:
+                - paragraph [ref=e986]: Baby Farlin
+                - heading "Farlin Comb & Brush Set" [level=3] [ref=e987]
+                - generic [ref=e988]:
+                  - text: Add to Regimen
+                  - img [ref=e989]
+          - link "Farlin Straw Drinking Cup 150ml Baby Farlin Farlin Straw Drinking Cup 150ml Add to Regimen" [ref=e992] [cursor=pointer]:
+            - /url: /product/farlin-straw-drinking-cup-150-ml
+            - generic [ref=e993]:
+              - img "Farlin Straw Drinking Cup 150ml" [ref=e995]
+              - generic [ref=e996]:
+                - paragraph [ref=e997]: Baby Farlin
+                - heading "Farlin Straw Drinking Cup 150ml" [level=3] [ref=e998]
+                - generic [ref=e999]:
+                  - text: Add to Regimen
+                  - img [ref=e1000]
+          - link "Farlin Gulu Straw Drinking Cup 120ml Baby Farlin Farlin Gulu Straw Drinking Cup 120ml Add to Regimen" [ref=e1003] [cursor=pointer]:
+            - /url: /product/farlin-gulu-straw-drinking-cup-120ml
+            - generic [ref=e1004]:
+              - img "Farlin Gulu Straw Drinking Cup 120ml" [ref=e1006]
+              - generic [ref=e1007]:
+                - paragraph [ref=e1008]: Baby Farlin
+                - heading "Farlin Gulu Straw Drinking Cup 120ml" [level=3] [ref=e1009]
+                - generic [ref=e1010]:
+                  - text: Add to Regimen
+                  - img [ref=e1011]
+          - link "Farlin Silicone Brush Set Baby Farlin Farlin Silicone Brush Set Add to Regimen" [ref=e1014] [cursor=pointer]:
+            - /url: /product/farlin-silicone-brush-set
+            - generic [ref=e1015]:
+              - img "Farlin Silicone Brush Set" [ref=e1017]
+              - generic [ref=e1018]:
+                - paragraph [ref=e1019]: Baby Farlin
+                - heading "Farlin Silicone Brush Set" [level=3] [ref=e1020]
+                - generic [ref=e1021]:
+                  - text: Add to Regimen
+                  - img [ref=e1022]
+          - link "Farlin Bottle & Nipple Brushes Baby Farlin Farlin Bottle & Nipple Brushes Add to Regimen" [ref=e1025] [cursor=pointer]:
+            - /url: /product/farlin-bottle-nipple-brushes-2
+            - generic [ref=e1026]:
+              - img "Farlin Bottle & Nipple Brushes" [ref=e1028]
+              - generic [ref=e1029]:
+                - paragraph [ref=e1030]: Baby Farlin
+                - heading "Farlin Bottle & Nipple Brushes" [level=3] [ref=e1031]
+                - generic [ref=e1032]:
+                  - text: Add to Regimen
+                  - img [ref=e1033]
+          - link "Farlin Nasal Aspirator Baby Farlin Farlin Nasal Aspirator Add to Regimen" [ref=e1036] [cursor=pointer]:
+            - /url: /product/farlin-nasal-aspirator
+            - generic [ref=e1037]:
+              - img "Farlin Nasal Aspirator" [ref=e1039]
+              - generic [ref=e1040]:
+                - paragraph [ref=e1041]: Baby Farlin
+                - heading "Farlin Nasal Aspirator" [level=3] [ref=e1042]
+                - generic [ref=e1043]:
+                  - text: Add to Regimen
+                  - img [ref=e1044]
+          - link "Farlin Parent & Child Nasal Aspirator Baby Farlin Farlin Parent & Child Nasal Aspirator Add to Regimen" [ref=e1047] [cursor=pointer]:
+            - /url: /product/farlin-parent-child-nasal-aspirator
+            - generic [ref=e1048]:
+              - img "Farlin Parent & Child Nasal Aspirator" [ref=e1050]
+              - generic [ref=e1051]:
+                - paragraph [ref=e1052]: Baby Farlin
+                - heading "Farlin Parent & Child Nasal Aspirator" [level=3] [ref=e1053]
+                - generic [ref=e1054]:
+                  - text: Add to Regimen
+                  - img [ref=e1055]
+          - link "Farlin Milk Powder Container Baby Farlin Farlin Milk Powder Container Add to Regimen" [ref=e1058] [cursor=pointer]:
+            - /url: /product/farlin-milk-powder-container-1
+            - generic [ref=e1059]:
+              - img "Farlin Milk Powder Container" [ref=e1061]
+              - generic [ref=e1062]:
+                - paragraph [ref=e1063]: Baby Farlin
+                - heading "Farlin Milk Powder Container" [level=3] [ref=e1064]
+                - generic [ref=e1065]:
+                  - text: Add to Regimen
+                  - img [ref=e1066]
+      - generic [ref=e1070]:
+        - heading "Curated Excellence" [level=2] [ref=e1072]
+        - generic [ref=e1074]:
+          - link "La Roche-Posay showcase La Roche-Posay Explore Collection" [ref=e1075] [cursor=pointer]:
+            - /url: /brands/la-roche-posay
+            - img "La Roche-Posay showcase" [ref=e1077]
+            - generic [ref=e1078]:
+              - heading "La Roche-Posay" [level=3] [ref=e1079]
+              - generic [ref=e1080]: Explore Collection
+          - link "Eucerin showcase Eucerin Explore Collection" [ref=e1081] [cursor=pointer]:
+            - /url: /brands/eucerin
+            - img "Eucerin showcase" [ref=e1083]
+            - generic [ref=e1084]:
+              - heading "Eucerin" [level=3] [ref=e1085]
+              - generic [ref=e1086]: Explore Collection
+          - link "Vichy showcase Vichy Explore Collection" [ref=e1087] [cursor=pointer]:
+            - /url: /brands/vichy
+            - img "Vichy showcase" [ref=e1089]
+            - generic [ref=e1090]:
+              - heading "Vichy" [level=3] [ref=e1091]
+              - generic [ref=e1092]: Explore Collection
+      - generic [ref=e1097]:
+        - img "The Alchemist's Touch — Gold serum on marble" [ref=e1100]
+        - generic [ref=e1104]:
+          - generic [ref=e1105]: The Editorial Edit
+          - heading "The Science of Radiance, Reimagined." [level=2] [ref=e1106]
+          - paragraph [ref=e1107]: We believe beauty begins with a profound understanding of your skin's unique needs. Curated by experts, Asper bridges the gap between medical precision and modern ritual.
+          - link "Explore More" [ref=e1108] [cursor=pointer]:
+            - /url: /skin-concerns
+            - button "Explore More" [ref=e1109]:
+              - text: Explore More
+              - img
+      - generic [ref=e1112]:
+        - generic [ref=e1113]:
+          - img [ref=e1115]
+          - heading "Authentic Quality" [level=3] [ref=e1118]
+          - paragraph [ref=e1119]: 100% verified supply chain. We guarantee full ingredient transparency and direct sourcing from leading dermatological laboratories.
+        - generic [ref=e1120]:
+          - img [ref=e1122]
+          - heading "Clinically Proven" [level=3] [ref=e1124]
+          - paragraph [ref=e1125]: Every formula is rigorously tested for efficacy and safety, ensuring high-performance results even for the most sensitive skin barriers.
+        - generic [ref=e1126]:
+          - img [ref=e1128]
+          - heading "Luxurious Efficacy" [level=3] [ref=e1131]
+          - paragraph [ref=e1132]: Bridging the gap between medical science and tactile luxury. Experience radiant finishes and elevated morning routines.
+      - generic [ref=e1134]:
+        - generic [ref=e1135]:
+          - heading "Clinical Results. Real Routines." [level=2] [ref=e1136]
+          - paragraph [ref=e1137]: Discover how our curated formulations perform across different skin profiles and aesthetic goals.
+        - generic [ref=e1138]:
+          - article [ref=e1139]:
+            - generic [ref=e1140]:
+              - generic [ref=e1141]:
+                - img [ref=e1142]
+                - img [ref=e1144]
+                - img [ref=e1146]
+                - img [ref=e1148]
+                - img [ref=e1150]
+              - generic [ref=e1152]:
+                - img [ref=e1153]
+                - text: Verified Buyer
+            - heading "\"Completely repaired my barrier.\"" [level=3] [ref=e1156]
+            - paragraph [ref=e1157]: After weeks of redness and stinging from over-exfoliation, this moisturizer was a lifesaver. It feels incredibly rich but sinks in beautifully. The 'Morning Spa' glow is real.
+            - generic [ref=e1158]:
+              - paragraph [ref=e1159]: Sarah M.
+              - generic [ref=e1160]:
+                - generic [ref=e1161]: "Type: Dry / Sensitive"
+                - generic [ref=e1162]: "Goal: Compromised Barrier"
+                - generic [ref=e1163]: "Age: 30s"
+          - article [ref=e1164]:
+            - generic [ref=e1165]:
+              - generic [ref=e1166]:
+                - img [ref=e1167]
+                - img [ref=e1169]
+                - img [ref=e1171]
+                - img [ref=e1173]
+                - img [ref=e1175]
+              - generic [ref=e1177]:
+                - img [ref=e1178]
+                - text: Verified Buyer
+            - heading "\"Holy grail for hyperpigmentation.\"" [level=3] [ref=e1181]
+            - paragraph [ref=e1182]: I consulted with Dr. Sami on the site and he recommended this specific Vitamin C. Three weeks later, my acne scars are visibly lighter. No irritation at all.
+            - generic [ref=e1183]:
+              - paragraph [ref=e1184]: Elena R.
+              - generic [ref=e1185]:
+                - generic [ref=e1186]: "Type: Combination / Acne-Prone"
+                - generic [ref=e1187]: "Goal: Post-Blemish Marks"
+                - generic [ref=e1188]: "Age: 20s"
+          - article [ref=e1189]:
+            - generic [ref=e1190]:
+              - generic [ref=e1191]:
+                - img [ref=e1192]
+                - img [ref=e1194]
+                - img [ref=e1196]
+                - img [ref=e1198]
+                - img [ref=e1200]
+              - generic [ref=e1202]:
+                - img [ref=e1203]
+                - text: Verified Buyer
+            - heading "\"Flawless, luminous finish.\"" [level=3] [ref=e1206]
+            - paragraph [ref=e1207]: Ms. Zain matched my shade perfectly. It provides just enough coverage to hide my redness while looking completely natural. A true luxury texture.
+            - generic [ref=e1208]:
+              - paragraph [ref=e1209]: Aisha K.
+              - generic [ref=e1210]:
+                - generic [ref=e1211]: "Type: Normal / Rosacea"
+                - generic [ref=e1212]: "Goal: Uneven Tone"
+                - generic [ref=e1213]: "Age: 40s"
+      - generic [ref=e1218]:
+        - generic [ref=e1219]:
+          - generic [ref=e1220]: Brand of the Week
+          - heading "Vichy" [level=2] [ref=e1221]
+          - paragraph [ref=e1222]: — The Power of Volcanic Water
+          - paragraph [ref=e1223]: Since 1931, Vichy has combined dermatological expertise with the power of French volcanic water to deliver effective, safe skincare solutions. Every product undergoes rigorous clinical testing to ensure visible results.
+          - generic [ref=e1224]:
+            - generic [ref=e1225]: Dermatologist Tested
+            - generic [ref=e1226]: Volcanic Water
+            - generic [ref=e1227]: Sensitive Skin Safe
+          - link "Explore Collection" [ref=e1228] [cursor=pointer]:
+            - /url: /brands/vichy
+            - button "Explore Collection" [ref=e1229]:
+              - text: Explore Collection
+              - img
+        - generic [ref=e1231]:
+          - img "Vichy brand showcase 1" [ref=e1232]
+          - img "Vichy brand showcase 2" [ref=e1233]
+          - img "Vichy brand showcase 3" [ref=e1234]
+          - generic [ref=e1235]:
+            - button "Previous slide" [ref=e1236] [cursor=pointer]:
+              - img [ref=e1237]
+            - generic [ref=e1239]:
+              - button "Go to slide 1" [ref=e1240] [cursor=pointer]
+              - button "Go to slide 2" [ref=e1241] [cursor=pointer]
+              - button "Go to slide 3" [ref=e1242] [cursor=pointer]
+            - button "Next slide" [ref=e1243] [cursor=pointer]:
+              - img [ref=e1244]
+      - generic [ref=e1248]:
+        - generic [ref=e1249]:
+          - paragraph [ref=e1250]: Your Clinical Routine in 3 Steps
+          - heading "The Digital Tray" [level=2] [ref=e1251]
+        - generic [ref=e1253]:
+          - button "Hydration" [ref=e1254] [cursor=pointer]
+          - button "Acne" [ref=e1255] [cursor=pointer]
+          - button "Anti-Aging" [ref=e1256] [cursor=pointer]
+          - button "Sensitivity" [ref=e1257] [cursor=pointer]
+          - button "Pigmentation" [ref=e1258] [cursor=pointer]
+          - button "Brightening" [ref=e1259] [cursor=pointer]
+          - button "Dryness" [ref=e1260] [cursor=pointer]
+          - button "Sun Protection" [ref=e1261] [cursor=pointer]
+          - button "Dark Circles" [ref=e1262] [cursor=pointer]
+          - button "Redness" [ref=e1263] [cursor=pointer]
+          - button "Oiliness" [ref=e1264] [cursor=pointer]
+          - button "Aging" [ref=e1265] [cursor=pointer]
+        - generic [ref=e1266]:
+          - generic [ref=e1267]:
+            - img [ref=e1269]
+            - paragraph [ref=e1273]: "Step 1: Cleanser"
+            - paragraph [ref=e1274]: Consult Pharmacist
+            - paragraph [ref=e1275]: We'll pick the right product for this step.
+          - generic [ref=e1276]:
+            - img [ref=e1278]
+            - paragraph [ref=e1282]: "Step 2: Treatment"
+            - paragraph [ref=e1283]: Consult Pharmacist
+            - paragraph [ref=e1284]: We'll pick the right product for this step.
+          - generic [ref=e1285]:
+            - img [ref=e1287]
+            - paragraph [ref=e1291]: "Step 3: Moisturizer / SPF"
+            - paragraph [ref=e1292]: Consult Pharmacist
+            - paragraph [ref=e1293]: We'll pick the right product for this step.
+      - generic [ref=e1297]:
+        - generic [ref=e1298]:
+          - img [ref=e1300]
+          - generic [ref=e1304]:
+            - paragraph [ref=e1305]: 2 Free Samples
+            - paragraph [ref=e1306]: With every order
+        - generic [ref=e1308]:
+          - img [ref=e1310]
+          - generic [ref=e1315]:
+            - paragraph [ref=e1316]: Fast Delivery
+            - paragraph [ref=e1317]: 3-6 business days
+        - generic [ref=e1319]:
+          - img [ref=e1321]
+          - generic [ref=e1324]:
+            - paragraph [ref=e1325]: Free Beauty Deals
+            - paragraph [ref=e1326]: Exclusive offers weekly
+      - generic [ref=e1329]:
+        - generic [ref=e1330]:
+          - generic [ref=e1331]: Our Brand Partners
+          - heading "Curated with Precision" [level=2] [ref=e1332]
+        - generic [ref=e1338]:
+          - link "La Roche-Posay" [ref=e1339] [cursor=pointer]:
+            - /url: /shop?brand=La%20Roche-Posay
+          - link "Vichy" [ref=e1340] [cursor=pointer]:
+            - /url: /shop?brand=Vichy
+          - link "Eucerin" [ref=e1341] [cursor=pointer]:
+            - /url: /shop?brand=Eucerin
+          - link "Bioderma" [ref=e1342] [cursor=pointer]:
+            - /url: /shop?brand=Bioderma
+          - link "Sesderma" [ref=e1343] [cursor=pointer]:
+            - /url: /shop?brand=Sesderma
+          - link "CeraVe" [ref=e1344] [cursor=pointer]:
+            - /url: /shop?brand=CeraVe
+          - link "COSRX" [ref=e1345] [cursor=pointer]:
+            - /url: /shop?brand=COSRX
+          - link "Kérastase" [ref=e1346] [cursor=pointer]:
+            - /url: /shop?brand=K%C3%A9rastase
+          - link "Guerlain" [ref=e1347] [cursor=pointer]:
+            - /url: /shop?brand=Guerlain
+          - link "Giorgio Armani" [ref=e1348] [cursor=pointer]:
+            - /url: /shop?brand=Giorgio%20Armani
+          - link "Augustinus Bader" [ref=e1349] [cursor=pointer]:
+            - /url: /shop?brand=Augustinus%20Bader
+          - link "YSL" [ref=e1350] [cursor=pointer]:
+            - /url: /shop?brand=YSL
+        - link "View All Brands" [ref=e1352] [cursor=pointer]:
+          - /url: /brands
+      - generic [ref=e1357]:
+        - img [ref=e1359]
+        - paragraph [ref=e1362]: Exclusive Offer
+        - heading "15% Off for Beauty Insiders" [level=2] [ref=e1363]
+        - paragraph [ref=e1368]: Sign up and get 15% off your first order, plus exclusive offers, early access to new arrivals, and expert beauty insights.
+        - generic [ref=e1370]:
+          - textbox "Enter your email" [ref=e1372]
+          - button "Subscribe" [ref=e1373] [cursor=pointer]:
+            - generic [ref=e1374]:
+              - img
+              - text: Subscribe
+        - paragraph [ref=e1376]: By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.
+      - generic [ref=e1381]:
+        - paragraph [ref=e1382]: How much do you like our assortment?
+        - generic [ref=e1383]:
+          - button "Rate 0 out of 10" [ref=e1384] [cursor=pointer]: "0"
+          - button "Rate 1 out of 10" [ref=e1385] [cursor=pointer]: "1"
+          - button "Rate 2 out of 10" [ref=e1386] [cursor=pointer]: "2"
+          - button "Rate 3 out of 10" [ref=e1387] [cursor=pointer]: "3"
+          - button "Rate 4 out of 10" [ref=e1388] [cursor=pointer]: "4"
+          - button "Rate 5 out of 10" [ref=e1389] [cursor=pointer]: "5"
+          - button "Rate 6 out of 10" [ref=e1390] [cursor=pointer]: "6"
+          - button "Rate 7 out of 10" [ref=e1391] [cursor=pointer]: "7"
+          - button "Rate 8 out of 10" [ref=e1392] [cursor=pointer]: "8"
+          - button "Rate 9 out of 10" [ref=e1393] [cursor=pointer]: "9"
+          - button "Rate 10 out of 10" [ref=e1394] [cursor=pointer]: "10"
+      - generic [ref=e1397]:
+        - generic [ref=e1398]:
+          - generic [ref=e1399]: Brand Philosophy
+          - heading "The Asper Experience" [level=2] [ref=e1400]
+        - generic [ref=e1401]:
+          - generic [ref=e1402]:
+            - generic [ref=e1403]:
+              - paragraph [ref=e1404]: Step into the Morning Spa. Where Clinical Precision meets Unmatched Luxury.
+              - link "Brand Philosophy" [ref=e1406] [cursor=pointer]:
+                - /url: /philosophy
+                - text: Brand Philosophy
+                - img [ref=e1407]
+            - button "Previous video" [ref=e1409] [cursor=pointer]:
+              - img [ref=e1410]
+            - button "Next video" [ref=e1412] [cursor=pointer]:
+              - img [ref=e1413]
+          - generic [ref=e1415]:
+            - button "Video 1" [ref=e1416] [cursor=pointer]
+            - button "Video 2" [ref=e1417] [cursor=pointer]
+            - button "Video 3" [ref=e1418] [cursor=pointer]
+            - button "Video 4" [ref=e1419] [cursor=pointer]
+      - generic [ref=e1423]:
+        - generic [ref=e1425]:
+          - img [ref=e1429]
+          - generic [ref=e1432]:
+            - heading "Guaranteed Authentic" [level=3] [ref=e1433]
+            - paragraph [ref=e1434]: We compete against fakes
+        - generic [ref=e1439]:
+          - img [ref=e1443]
+          - generic [ref=e1447]:
+            - heading "Pharmacist Verified" [level=3] [ref=e1448]
+            - paragraph [ref=e1449]: We are experts
+        - generic [ref=e1454]:
+          - img [ref=e1458]
+          - generic [ref=e1463]:
+            - heading "Amman Concierge Delivery" [level=3] [ref=e1464]
+            - paragraph [ref=e1465]: We are fast
+    - contentinfo [ref=e1467]:
+      - generic [ref=e1469]:
+        - generic [ref=e1470]:
+          - link "Asper" [ref=e1471] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e1472]: Asper
+          - paragraph [ref=e1473]: Redefining Beauty in Jordan.
+          - generic [ref=e1474]:
+            - link "Instagram" [ref=e1475] [cursor=pointer]:
+              - /url: https://www.instagram.com/asper.beauty.shop/
+              - img [ref=e1476]
+            - link "Facebook" [ref=e1478] [cursor=pointer]:
+              - /url: https://www.facebook.com/AsperBeautyShop
+              - img [ref=e1479]
+            - link "TikTok" [ref=e1481] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@asper.beauty.shop
+              - img [ref=e1482]
+            - link "WhatsApp" [ref=e1484] [cursor=pointer]:
+              - /url: https://wa.me/962790656666
+              - img [ref=e1485]
+            - link "X (Twitter)" [ref=e1487] [cursor=pointer]:
+              - /url: https://x.com/asperbeautyshop
+              - img [ref=e1488]
+            - link "YouTube" [ref=e1490] [cursor=pointer]:
+              - /url: https://www.youtube.com/@asperbeautyshop
+              - img [ref=e1491]
+            - link "LinkedIn" [ref=e1493] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/asper-beauty-shop
+              - img [ref=e1494]
+            - link "Snapchat" [ref=e1496] [cursor=pointer]:
+              - /url: https://www.snapchat.com/add/asperbeautyshop
+              - img [ref=e1497]
+            - link "Pinterest" [ref=e1499] [cursor=pointer]:
+              - /url: https://www.pinterest.com/asperbeautyshop
+              - img [ref=e1500]
+        - generic [ref=e1502]:
+          - heading "Concierge" [level=3] [ref=e1503]
+          - list [ref=e1504]:
+            - listitem [ref=e1505]:
+              - button "Digital Consult • Dr.Bot" [ref=e1506] [cursor=pointer]
+            - listitem [ref=e1507]:
+              - link "Track Order" [ref=e1508] [cursor=pointer]:
+                - /url: /track-order
+            - listitem [ref=e1509]:
+              - link "Shipping Policy" [ref=e1510] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e1511]:
+              - link "Returns & Exchanges" [ref=e1512] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e1513]:
+              - link "Skin Consultation" [ref=e1514] [cursor=pointer]:
+                - /url: /skin-concerns
+        - generic [ref=e1515]:
+          - heading "About Asper" [level=3] [ref=e1516]
+          - list [ref=e1517]:
+            - listitem [ref=e1518]:
+              - link "Our Philosophy" [ref=e1519] [cursor=pointer]:
+                - /url: /philosophy
+            - listitem [ref=e1520]:
+              - link "Contact Us" [ref=e1521] [cursor=pointer]:
+                - /url: /contact
+          - heading "Visit Us" [level=4] [ref=e1522]
+          - generic [ref=e1523]:
+            - paragraph [ref=e1524]: Amman, Jordan
+            - link "+962 79 065 6666" [ref=e1525] [cursor=pointer]:
+              - /url: tel:+962790656666
+            - link "asperpharma@gmail.com" [ref=e1526] [cursor=pointer]:
+              - /url: mailto:asperpharma@gmail.com
+        - generic [ref=e1527]:
+          - heading "Join the Morning Spa" [level=3] [ref=e1528]
+          - paragraph [ref=e1529]: Exclusive insights from Dr. Sami & Ms. Zain — tailored regimens, clinical tips, and early access delivered to your inbox.
+          - generic [ref=e1530]:
+            - textbox "Your email" [ref=e1531]
+            - button "Enter the Morning Spa" [ref=e1532] [cursor=pointer]
+          - paragraph [ref=e1533]: 🔬 Pharmacist Insights · ✨ Beauty Wisdom · Always Free
+      - generic [ref=e1536]:
+        - generic [ref=e1537]:
+          - heading "Top Brands" [level=4] [ref=e1538]
+          - generic [ref=e1539]:
+            - link "Vichy" [ref=e1540] [cursor=pointer]:
+              - /url: /brands/vichy
+            - link "Eucerin" [ref=e1541] [cursor=pointer]:
+              - /url: /brands/eucerin
+            - link "Bioderma" [ref=e1542] [cursor=pointer]:
+              - /url: /brands/bioderma
+            - link "Cetaphil" [ref=e1543] [cursor=pointer]:
+              - /url: /brands/cetaphil
+            - link "SVR" [ref=e1544] [cursor=pointer]:
+              - /url: /brands/svr
+            - link "La Roche-Posay" [ref=e1545] [cursor=pointer]:
+              - /url: /brands/la-roche-posay
+            - link "Bourjois" [ref=e1546] [cursor=pointer]:
+              - /url: /brands/bourjois
+            - link "Essence" [ref=e1547] [cursor=pointer]:
+              - /url: /brands/essence
+            - link "IsaDora" [ref=e1548] [cursor=pointer]:
+              - /url: /brands/isadora
+            - link "Maybelline" [ref=e1549] [cursor=pointer]:
+              - /url: /brands/maybelline
+            - link "L'Oréal Paris" [ref=e1550] [cursor=pointer]:
+              - /url: /brands/l-oréal-paris
+            - link "Garnier" [ref=e1551] [cursor=pointer]:
+              - /url: /brands/garnier
+        - generic [ref=e1552]:
+          - heading "Top Categories" [level=4] [ref=e1553]
+          - generic [ref=e1554]:
+            - link "Skincare" [ref=e1555] [cursor=pointer]:
+              - /url: /collections/skincare
+            - link "Makeup" [ref=e1556] [cursor=pointer]:
+              - /url: /collections/makeup
+            - link "Perfume" [ref=e1557] [cursor=pointer]:
+              - /url: /collections/perfume
+            - link "Hair Care" [ref=e1558] [cursor=pointer]:
+              - /url: /collections/hair
+            - link "Body Care" [ref=e1559] [cursor=pointer]:
+              - /url: /collections/body
+            - link "Sun Protection" [ref=e1560] [cursor=pointer]:
+              - /url: /collections/suncare
+            - link "Anti-Aging" [ref=e1561] [cursor=pointer]:
+              - /url: /concerns/anti-aging
+            - link "Acne Treatment" [ref=e1562] [cursor=pointer]:
+              - /url: /concerns/acne
+            - link "Moisturizers" [ref=e1563] [cursor=pointer]:
+              - /url: /collections/moisturizers
+            - link "Serums" [ref=e1564] [cursor=pointer]:
+              - /url: /collections/serums
+      - generic [ref=e1566]:
+        - generic [ref=e1567]:
+          - generic [ref=e1568]:
+            - img [ref=e1569]
+            - generic [ref=e1572]: Licensed Pharmacy
+          - generic [ref=e1574]:
+            - img [ref=e1575]
+            - generic [ref=e1578]: JFDA Certified
+          - generic [ref=e1580]:
+            - img [ref=e1581]
+            - generic [ref=e1584]: 100% Authentic
+          - generic [ref=e1586]:
+            - img [ref=e1587]
+            - generic [ref=e1591]: Pharmacist Reviewed
+        - img "Asper Certified — Authentic Quality — Pharmacist Curated" [ref=e1594]:
+          - generic [ref=e1605]: ASPER CERTIFIED
+          - generic [ref=e1606]: AUTHENTIC QUALITY • PHARMACIST CURATED
+        - paragraph [ref=e1609]: Packaging design may vary from images shown due to manufacturer updates. Product formulation and ingredients remain unchanged.
+        - paragraph [ref=e1610]: © 2026 Asper Beauty Shop. All Rights Reserved.
+      - generic [ref=e1613]:
+        - generic [ref=e1614]:
+          - heading "Top Brands" [level=3] [ref=e1615]
+          - generic [ref=e1616]:
+            - link "Vichy" [ref=e1617] [cursor=pointer]:
+              - /url: /brands?brand=Vichy
+            - link "La Roche-Posay" [ref=e1618] [cursor=pointer]:
+              - /url: /brands?brand=La%20Roche-Posay
+            - link "Maybelline" [ref=e1619] [cursor=pointer]:
+              - /url: /brands?brand=Maybelline
+            - link "L'Oréal Paris" [ref=e1620] [cursor=pointer]:
+              - /url: /brands?brand=L'Or%C3%A9al%20Paris
+            - link "Garnier" [ref=e1621] [cursor=pointer]:
+              - /url: /brands?brand=Garnier
+            - link "Neutrogena" [ref=e1622] [cursor=pointer]:
+              - /url: /brands?brand=Neutrogena
+            - link "CeraVe" [ref=e1623] [cursor=pointer]:
+              - /url: /brands?brand=CeraVe
+            - link "Eucerin" [ref=e1624] [cursor=pointer]:
+              - /url: /brands?brand=Eucerin
+            - link "Bioderma" [ref=e1625] [cursor=pointer]:
+              - /url: /brands?brand=Bioderma
+            - link "Avène" [ref=e1626] [cursor=pointer]:
+              - /url: /brands?brand=Av%C3%A8ne
+            - link "The Ordinary" [ref=e1627] [cursor=pointer]:
+              - /url: /brands?brand=The%20Ordinary
+            - link "Paula's Choice" [ref=e1628] [cursor=pointer]:
+              - /url: /brands?brand=Paula's%20Choice
+            - link "Diptyque" [ref=e1629] [cursor=pointer]:
+              - /url: /brands?brand=Diptyque
+            - link "Byredo" [ref=e1630] [cursor=pointer]:
+              - /url: /brands?brand=Byredo
+            - link "Augustinus Bader" [ref=e1631] [cursor=pointer]:
+              - /url: /brands?brand=Augustinus%20Bader
+        - generic [ref=e1632]:
+          - heading "Top Categories" [level=3] [ref=e1633]
+          - generic [ref=e1634]:
+            - link "Skincare" [ref=e1635] [cursor=pointer]:
+              - /url: /collections/skincare
+            - link "Makeup" [ref=e1636] [cursor=pointer]:
+              - /url: /collections/makeup
+            - link "Perfume" [ref=e1637] [cursor=pointer]:
+              - /url: /collections/fragrance
+            - link "Hair Care" [ref=e1638] [cursor=pointer]:
+              - /url: /collections/hair
+            - link "Anti-Aging" [ref=e1639] [cursor=pointer]:
+              - /url: /concerns/anti-aging
+            - link "Acne Treatment" [ref=e1640] [cursor=pointer]:
+              - /url: /concerns/acne
+            - link "Hydration" [ref=e1641] [cursor=pointer]:
+              - /url: /concerns/hydration
+            - link "Sun Protection" [ref=e1642] [cursor=pointer]:
+              - /url: /concerns/sun-protection
+            - link "Brightening" [ref=e1643] [cursor=pointer]:
+              - /url: /concerns/brightening
+            - link "Sensitive Skin" [ref=e1644] [cursor=pointer]:
+              - /url: /concerns/sensitivity
+    - button "Scroll to top":
+      - img
+    - generic [ref=e1645]:
+      - link "Instagram" [ref=e1646] [cursor=pointer]:
+        - /url: https://www.instagram.com/asper.beauty.shop/
+        - img [ref=e1648]
+        - generic: Instagram
+      - link "Facebook" [ref=e1650] [cursor=pointer]:
+        - /url: https://www.facebook.com/AsperBeautyShop
+        - img [ref=e1652]
+        - generic: Facebook
+      - link "TikTok" [ref=e1654] [cursor=pointer]:
+        - /url: https://www.tiktok.com/@asper.beauty.shop
+        - img [ref=e1656]
+        - generic: TikTok
+      - link "WhatsApp" [ref=e1658] [cursor=pointer]:
+        - /url: https://wa.me/962790656666
+        - img [ref=e1660]
+        - generic: WhatsApp
+      - link "X" [ref=e1662] [cursor=pointer]:
+        - /url: https://x.com/asperbeautyshop
+        - img [ref=e1664]
+        - generic: X
+      - link "YouTube" [ref=e1666] [cursor=pointer]:
+        - /url: https://www.youtube.com/@asperbeautyshop
+        - img [ref=e1668]
+        - generic: YouTube
+      - link "LinkedIn" [ref=e1670] [cursor=pointer]:
+        - /url: https://www.linkedin.com/company/asper-beauty-shop
+        - img [ref=e1672]
+        - generic: LinkedIn
+      - link "Snapchat" [ref=e1674] [cursor=pointer]:
+        - /url: https://www.snapchat.com/add/asperbeautyshop
+        - img [ref=e1676]
+        - generic: Snapchat
+      - link "Pinterest" [ref=e1678] [cursor=pointer]:
+        - /url: https://www.pinterest.com/asperbeautyshop
+        - img [ref=e1680]
+        - generic: Pinterest
+```
