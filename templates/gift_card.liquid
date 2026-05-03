@@ -1,0 +1,32 @@
+{%- comment -%}
+  Gift card template must be a .liquid file (not JSON) per Shopify requirements.
+  The React app handles gift card display at the /gift_cards/:id route.
+{%- endcomment -%}
+{% layout none %}
+<!DOCTYPE html>
+<html
+  lang="{{ request.locale.iso_code }}"
+  dir="{% if request.locale.iso_code contains 'ar' %}rtl{% else %}ltr{% endif %}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{ content_for_header }}
+    <title>{{ gift_card.initial_value | money_without_trailing_zeros }} {{ 'Gift Card' }} — {{ shop.name }}</title>
+    {{ 'asper-beauty.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.__SHOPIFY_GIFT_CARD__ = {
+        code: {{ gift_card.code | json }},
+        balance: {{ gift_card.balance | money | json }},
+        initialValue: {{ gift_card.initial_value | money | json }},
+        expiresOn: {{ gift_card.expires_on | json }},
+        expired: {{ gift_card.expired }},
+        enabled: {{ gift_card.enabled }}
+      };
+    </script>
+    <script src="{{ 'asper-beauty.js' | asset_url }}" defer></script>
+  </body>
+</html>

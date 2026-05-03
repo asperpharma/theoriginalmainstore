@@ -1,0 +1,77 @@
+# Deploy the Asper Beauty React app as a Shopify theme.
+#
+# Required GitHub Secrets:
+#   SHOPIFY_STORE           — store URL, e.g. asper-beauty-shop-6.myshopify.com
+#   SHOPIFY_CLI_THEME_TOKEN — password from a Shopify Theme Access app
+#                             (Admin → Apps → Theme Access)
+#   SHOPIFY_THEME_ID        — numeric ID of the theme to push to
+#                             (find it at Admin → Online Store → Themes → ⋯ → Edit code,
+#                              the number in the URL is the theme ID)
+#
+# Flow:
+#   1. Install Node deps
+#   2. Build IIFE bundle → assets/asper-beauty.js + assets/asper-beauty.css
+#   3. Push all theme files to Shopify (respects .shopifyignore)
+
+name: Deploy Shopify Theme
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: shopify-theme-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build & Push to Shopify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required secrets
+        id: secrets_check
+        env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+        run: |
+          missing=()
+          [ -z "$SHOPIFY_STORE" ]           && missing+=("SHOPIFY_STORE")
+          [ -z "$SHOPIFY_CLI_THEME_TOKEN" ] && missing+=("SHOPIFY_CLI_THEME_TOKEN")
+          [ -z "$SHOPIFY_THEME_ID" ]        && missing+=("SHOPIFY_THEME_ID")
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "Missing secrets: ${missing[*]}" >&2
+            echo "Set these in Settings → Secrets → Actions before deploying." >&2
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Shopify theme assets
+        run: npm run build:shopify
+
+      - name: Push theme to Shopify
+        run: |
+          npx @shopify/cli@latest theme push \
+            --store="${{ secrets.SHOPIFY_STORE }}" \
+            --theme="${{ secrets.SHOPIFY_THEME_ID }}" \
+            --nodelete \
+            --allow-live
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
