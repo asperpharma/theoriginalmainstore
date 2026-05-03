@@ -1,0 +1,70 @@
+name: Claude PR Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: pr-build-${{ github.event.pull_request.number }}
+          path: dist/
+          retention-days: 5
+
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          track_progress: true
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+
+            Review this PR for the Asper Beauty Shop (React + TypeScript + Vite + Supabase + Shopify).
+
+            ## Code Quality
+            - TypeScript strict mode compliance (no `any`)
+            - Proper use of existing design tokens (maroon #800020, gold #C5A028, ivory #F8F8FF)
+            - Neumorphic shadow utilities used consistently
+            - No hardcoded colors — use CSS variables
+
+            ## Bilingual / RTL
+            - Arabic text uses useLanguage() context, not hardcoded strings
+            - RTL layout handled via isAr/isRTL checks
+            - No letter-spacing on Arabic text
+            - Tajawal font for Arabic headings
+
+            ## Security
+            - No exposed API keys or service role keys
+            - Supabase anon key only on frontend
+            - RLS consideration for new tables
+            - No XSS or injection vectors
+
+            ## Performance
+            - Lazy loading for below-fold components
+            - Images use BlurUpImage or lazy loading
+            - No unnecessary re-renders
+
+            Post findings as inline comments for specific issues.
+
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"

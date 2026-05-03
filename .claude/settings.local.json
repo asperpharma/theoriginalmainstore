@@ -1,0 +1,78 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vercel:*)",
+      "Bash(vercel whoami:*)",
+      "Bash(vercel link:*)",
+      "Bash(vercel domains:*)",
+      "Bash(vercel project:*)",
+      "Bash(vercel --prod)",
+      "Bash(xargs grep:*)",
+      "Bash(npm run:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm install:*)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"beauty spa wellness\" --design-system -p \"Asper Beauty Shop\")",
+      "Read(//c/Users/C-R/.claude/skills/**)",
+      "Read(//c/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b/**)",
+      "Bash(gh pr create --title 'feat: neumorphic elite UI redesign with RTL support' --body ':*)",
+      "Bash(node node_modules/.bin/vite build)",
+      "Bash(node node_modules/vite/bin/vite.js build)",
+      "Bash(gh pr:*)",
+      "Bash(curl:*)",
+      "Bash(vercel ls:*)",
+      "Bash(f2u:*)",
+      "Bash(npm list:*)",
+      "Bash(npx skillx:*)",
+      "Bash(gh api:*)",
+      "Bash(git clone:*)",
+      "Bash(gh search:*)",
+      "Bash(wait)",
+      "Bash(claude mcp:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(grep -rLn 'useLanguage\\\\|isAr\\\\|isArabic\\\\|locale' src/pages/*.tsx)",
+      "Bash(npx ecc:*)",
+      "Bash(npx playwright:*)",
+      "Bash(ls .env*)",
+      "Bash(start:*)",
+      "Bash(grep:*)",
+      "Bash(supabase --version)",
+      "Bash(npx supabase:*)",
+      "Bash(supabase projects:*)",
+      "Bash(node __TRACKED_VAR__/.claude/skills/everything-claude-code/scripts/harness-audit.js repo --format text)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "supabase"
+  ],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx eslint --fix \"$TOOL_INPUT_FILE_PATH\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "grep -n 'console.log' \"$TOOL_INPUT_FILE_PATH\" 2>/dev/null && echo '[Hook] Remove console.log' >&2 || true"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$TOOL_INPUT_FILE_PATH\" | grep -qE \"\\.env\" && echo \"BLOCKED: Cannot edit .env files\" && exit 1 || true"
+          }
+        ]
+      }
+    ]
+  }
+}
