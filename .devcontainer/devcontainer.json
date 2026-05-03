@@ -1,0 +1,16 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+<<<<<<< Updated upstream
+        "Anthropic.claude-code"
+=======
+        "Anthropic.claude-code",
+        "eg2.vscode-npm-script"
+>>>>>>> Stashed changes
+      ]
+    }
+  }
+}
