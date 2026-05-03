@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+  lang="{{ request.locale.iso_code }}"
+  dir="{% if request.locale.iso_code contains 'ar' %}rtl{% else %}ltr{% endif %}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {%- comment -%} Shopify required tag — injects analytics, polyfills, etc. {%- endcomment -%}
+    {{ content_for_header }}
+
+    {%- comment -%} Preconnect to external origins for faster font and API loading {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://mpcxpydkzvwlflxcujnz.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://mpcxpydkzvwlflxcujnz.supabase.co" />
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.shopify.com" />
+
+    {%- comment -%} Font preloads {%- endcomment -%}
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <title>
+      {{ page_title }}
+      {%- unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}" />
+    {%- endif -%}
+
+    {%- comment -%} React application stylesheet (built with `npm run build:shopify`) {%- endcomment -%}
+    {{ 'asper-beauty.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body>
+    {%- comment -%}
+      All pages render into this React root. React Router takes over client-side
+      routing after the initial page load.
+    {%- endcomment -%}
+    {{ content_for_layout }}
+
+    {%- comment -%} React application bundle (built with `npm run build:shopify`) {%- endcomment -%}
+    <script src="{{ 'asper-beauty.js' | asset_url }}" defer></script>
+  </body>
+</html>

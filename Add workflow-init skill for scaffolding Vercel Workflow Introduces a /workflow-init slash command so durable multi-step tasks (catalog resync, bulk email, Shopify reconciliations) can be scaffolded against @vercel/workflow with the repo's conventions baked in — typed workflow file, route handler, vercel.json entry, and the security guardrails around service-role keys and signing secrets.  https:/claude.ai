@@ -1,0 +1,12 @@
+
+Add workflow-init skill for scaffolding Vercel Workflow
+Introduces a /workflow-init slash command so durable multi-step tasks
+(catalog resync, bulk email, Shopify reconciliations) can be scaffolded
+against @vercel/workflow with the repo's conventions baked in — typed
+workflow file, route handler, vercel.json entry, and the security
+guardrails around service-role keys and signing secrets.
+
+https://claude.ai/code/session_01FtynX9Ua58LiMDG7Fx8xnx
+main(#213)
+1 parent 
+9706f
