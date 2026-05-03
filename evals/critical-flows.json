@@ -1,0 +1,48 @@
+{
+  "name": "Asper Beauty Critical Flows",
+  "version": "1.0.0",
+  "evals": [
+    {
+      "id": "homepage-loads",
+      "description": "Homepage renders with hero section and navigation",
+      "type": "e2e",
+      "command": "npx playwright test e2e/critical-flows.spec.ts -g 'homepage'",
+      "pass_criteria": "exit_code == 0"
+    },
+    {
+      "id": "shop-products-load",
+      "description": "Shop page loads product cards from Supabase",
+      "type": "e2e",
+      "command": "npx playwright test e2e/critical-flows.spec.ts -g 'shop page'",
+      "pass_criteria": "exit_code == 0"
+    },
+    {
+      "id": "typescript-clean",
+      "description": "TypeScript compiles without errors",
+      "type": "static",
+      "command": "npm run typecheck",
+      "pass_criteria": "exit_code == 0"
+    },
+    {
+      "id": "lint-clean",
+      "description": "ESLint passes with 0 errors",
+      "type": "static",
+      "command": "npm run lint",
+      "pass_criteria": "no errors (warnings ok)"
+    },
+    {
+      "id": "build-succeeds",
+      "description": "Vite build completes without errors",
+      "type": "build",
+      "command": "npm run build",
+      "pass_criteria": "exit_code == 0"
+    },
+    {
+      "id": "telegram-bot-responds",
+      "description": "Telegram bot edge function responds to GET",
+      "type": "integration",
+      "command": "curl -s https://mpcxpydkzvwlflxcujnz.supabase.co/functions/v1/telegram-bot",
+      "pass_criteria": "response == 'OK'"
+    }
+  ]
+}
