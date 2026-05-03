@@ -1,0 +1,37 @@
+{
+  "general": {
+    "404": {
+      "title": "الصفحة غير موجودة",
+      "subtext": "الصفحة التي طلبتها غير موجودة.",
+      "continue_shopping": "متابعة التسوق"
+    },
+    "password_page": {
+      "opening_soon": "قريباً"
+    },
+    "accessibility": {
+      "skip_to_content": "تخطي إلى المحتوى"
+    },
+    "newsletter": {
+      "email_placeholder": "بريدك الإلكتروني"
+    },
+    "footer": {
+      "rights_reserved": "جميع الحقوق محفوظة."
+    },
+    "search": {
+      "placeholder": "ابحثي في أسبر للجمال"
+    },
+    "cart": {
+      "title": "سلة التسوق",
+      "empty": "السلة فارغة",
+      "subtotal": "المجموع الفرعي",
+      "checkout": "إتمام الطلب"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "أضيفي إلى السلة",
+      "sold_out": "نفدت الكمية",
+      "on_sale": "تخفيض"
+    }
+  }
+}

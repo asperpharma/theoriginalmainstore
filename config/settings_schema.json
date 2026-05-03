@@ -1,0 +1,67 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Asper Beauty — Medical Luxury",
+    "theme_version": "1.0.0",
+    "theme_author": "Asper Pharma",
+    "theme_documentation_url": "https://www.asperbeautyshop.com",
+    "theme_support_url": "mailto:care@asperpharma.com"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "color",
+        "id": "color_canvas",
+        "label": "Canvas (Soft Ivory)",
+        "default": "#F8F8FF"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary (Deep Maroon)",
+        "default": "#800020"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (Shiny Gold)",
+        "default": "#C5A028"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text (Dark Charcoal)",
+        "default": "#333333"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Fonts are loaded from Google Fonts: Playfair Display (display), Montserrat (body), Tajawal (Arabic). Edit fonts in layout/theme.liquid if you need to change them."
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "container_max_width",
+        "label": "Container max width (px)",
+        "min": 1200,
+        "max": 1600,
+        "step": 40,
+        "default": 1440
+      }
+    ]
+  }
+]

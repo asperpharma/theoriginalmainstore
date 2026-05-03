@@ -1,0 +1,53 @@
+name: Storefront 1000130081
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
+
+concurrency:
+  group: oxygen-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    name: Deploy to Oxygen
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check Oxygen deployment token
+        id: token_check
+        env:
+          OXYGEN_TOKEN: ${{ secrets.OXYGEN_DEPLOYMENT_TOKEN_1000130081 }}
+        run: |
+          if [ -z "$OXYGEN_TOKEN" ]; then
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+            echo "Oxygen deployment token missing; skipping deploy."
+          else
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup node.js
+        if: steps.token_check.outputs.has_token == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        if: steps.token_check.outputs.has_token == 'true'
+        run: npm ci
+
+      - name: Build and Publish to Oxygen
+        if: steps.token_check.outputs.has_token == 'true'
+        run: npx shopify hydrogen deploy --build-command "npm run hydrogen:build"
+        env:
+          SHOPIFY_HYDROGEN_DEPLOYMENT_TOKEN: ${{ secrets.OXYGEN_DEPLOYMENT_TOKEN_1000130081 }}

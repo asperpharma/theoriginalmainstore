@@ -1,0 +1,27 @@
+# shopify.app.toml — Shopify CLI / Hydrogen app configuration
+# https://shopify.dev/docs/api/shopify-cli/app/app-configuration
+
+name = "Asper Beauty Shop"
+client_id = "your-shopify-client-id"
+application_url = "https://asperbeautyshop.com"
+embedded = false
+
+[build]
+  automatically_update_urls_on_dev = true
+  dev_store_url = "asper-beauty-shop-6.myshopify.com"
+
+[access_scopes]
+  # Storefront access (read-only for headless / Hydrogen)
+  scopes = "unauthenticated_read_product_listings,unauthenticated_read_collection_listings,unauthenticated_write_checkouts,unauthenticated_read_checkouts,unauthenticated_write_customers,unauthenticated_read_customer_tags,unauthenticated_read_content"
+
+[auth]
+  redirect_urls = [
+    "https://asperbeautyshop.com/auth/callback",
+    "http://localhost:3000/auth/callback"
+  ]
+
+[webhooks]
+  api_version = "2025-07"
+
+[pos]
+  embedded = false
