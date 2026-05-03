@@ -1,0 +1,58 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp /c/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Problem_Framing_Skill.md /c/Users/C-R/.claude/skills/civic-problem-framing.md)",
+      "Bash(cp /c/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Analytical_Skill.md /c/Users/C-R/.claude/skills/civic-analytical.md)",
+      "Bash(cp /c/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Communication_Skill.md /c/Users/C-R/.claude/skills/civic-communication.md)",
+      "Bash(cp /c/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Benchmarking_Skill.md /c/Users/C-R/.claude/skills/civic-benchmarking.md)",
+      "Bash(cp /c/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/SKILL.md /c/Users/C-R/.claude/skills/civic-analytics-orchestrator.md)",
+      "Bash(cp c:/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Problem_Framing_Skill.md c:/Users/C-R/.claude/skills/civic-problem-framing.md)",
+      "Bash(cp c:/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Analytical_Skill.md c:/Users/C-R/.claude/skills/civic-analytical.md)",
+      "Bash(cp c:/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Communication_Skill.md c:/Users/C-R/.claude/skills/civic-communication.md)",
+      "Bash(cp c:/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/Benchmarking_Skill.md c:/Users/C-R/.claude/skills/civic-benchmarking.md)",
+      "Bash(cp c:/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b.worktrees/copilot-worktree-2026-04-10T03-26-48/Civic-Analytics-Agent-Workflow-Claude-Skill/SKILL.md c:/Users/C-R/.claude/skills/civic-analytics-orchestrator.md)",
+      "Read(//c/Users/C-R/Documents/understand-project//**)",
+      "Read(//c/Users/C-R/.claude/plugins/cache/**)",
+      "Bash(node \"/c/Users/C-R/.claude/skills/everything-claude-code/scripts/skills-health.js\" --dashboard)",
+      "Read(//c/Users/C-R/.claude/**)",
+      "Bash(ls c:/Users/C-R/Documents/understand-project/asper-beauty-spottttttt-6847d53b/*.md)",
+      "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\('devDeps:', list\\(p.get\\('devDependencies',{}\\).keys\\(\\)\\)\\)\")",
+      "Edit(/.claude/skills/deploy-function/**)",
+      "Edit(/.claude/skills/new-component/**)",
+      "Skill(claude-md-management:revise-claude-md)",
+      "Skill(claude-md-management:revise-claude-md:*)",
+      "Bash(E2E_BASE_URL=https://asperbeautyshop.com npx playwright test e2e/production-flows.spec.ts --reporter=list)",
+      "Bash(E2E_BASE_URL=https://asperbeautyshop.com npx playwright test e2e/production-flows.spec.ts --reporter=list --timeout=40000)",
+      "Bash(gh issue:*)",
+      "WebFetch(domain:github.com)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\C-R\\Documents\\understand-project",
+      "C:\\Users\\C-R\\.claude\\skills"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=\"$CLAUDE_FILE_PATHS\"; case \"$FILE\" in *.ts|*.tsx|*.js|*.jsx) npx eslint --fix \"$FILE\" 2>/dev/null || true ;; esac"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const i=JSON.parse(d);const f=i.tool_input&&(i.tool_input.file_path||i.tool_input.path)||'';if(/\\.env(\\.[^.]+)?$/.test(f)&&!/\\.env\\.example$/.test(f)){console.error('[Hook] BLOCKED: .env files are protected');process.exit(2)}process.stdout.write(d)})\""
+          }
+        ]
+      }
+    ]
+  }
+}
