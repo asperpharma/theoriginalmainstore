@@ -1,9 +1,9 @@
 ---
-name: Asper Beauty Shop
+name: Custom issue template
 about: Describe this issue template's purpose here.
 title: ''
 labels: ''
-assignees: asperpharma
+assignees: ''
 
 ---
 
