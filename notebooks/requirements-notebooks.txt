@@ -1,0 +1,14 @@
+jupyter>=1.0.0
+google-generativeai>=0.3.0
+pandas>=2.0.0
+python-dotenv>=1.0.0
+
+# Analytics & data science (branch efficiency notebook)
+numpy>=1.26.0
+scikit-learn>=1.4.0
+xgboost>=2.0.0
+prophet>=1.1.5
+plotly>=5.20.0
+scipy>=1.12.0
+pyod>=1.1.3
+joblib>=1.3.0
