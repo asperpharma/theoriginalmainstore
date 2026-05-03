@@ -1,0 +1,380 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { ProductCard } from "@/components/ProductCard";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { type ShopifyProduct } from "@/lib/shopify";
+import { supabase } from "@/integrations/supabase/client";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import {
+  Droplets,
+  Eye,
+  Heart,
+  Loader2,
+  Shield,
+  Sparkles,
+  Sun,
+  Umbrella,
+} from "lucide-react";
+import { logSkinConcernClick } from "@/lib/conciergeAnalytics";
+const antiAgingImage = "/categories/anti-aging.webp";
+const hydrationImage = "/categories/hydration.webp";
+const acneImage = "/categories/acne.webp";
+const brighteningImage = "/categories/brightening.webp";
+const sensitivityImage = "/categories/sensitivity.webp";
+const sunProtectionImage = "/categories/sun-protection.webp";
+const darkCirclesImage = "/categories/dark-circles.webp";
+const skinConcerns = [{
+  id: "anti-aging",
+  nameEn: "Anti-Aging",
+  nameAr: "مكافحة الشيخوخة",
+  descriptionEn: "Turn back time with powerful anti-aging formulas featuring retinol, collagen, and peptides.",
+  descriptionAr: "استعيدي شباب بشرتك مع تركيبات قوية لمكافحة الشيخوخة.",
+  image: antiAgingImage,
+  icon: Sparkles,
+  dbConcerns: ["Concern_Aging", "Concern_AntiAging"],
+  color: "from-amber-500/20 to-orange-500/20",
+}, {
+  id: "hydration",
+  nameEn: "Hydration",
+  nameAr: "الترطيب",
+  descriptionEn: "Quench your skin's thirst with intense hydration boosters and hyaluronic acid.",
+  descriptionAr: "رطبي بشرتك بعمق مع معززات الترطيب وحمض الهيالورونيك.",
+  image: hydrationImage,
+  icon: Droplets,
+  dbConcerns: ["Concern_Hydration", "Concern_Dryness"],
+  color: "from-cyan-500/20 to-blue-500/20",
+}, {
+  id: "acne",
+  nameEn: "Acne & Blemishes",
+  nameAr: "حب الشباب والبقع",
+  descriptionEn: "Clear and purify your skin with targeted treatments for acne-prone skin.",
+  descriptionAr: "نقي بشرتك مع علاجات مستهدفة للبشرة المعرضة لحب الشباب.",
+  image: acneImage,
+  icon: Shield,
+  dbConcerns: ["Concern_Acne"],
+  color: "from-green-500/20 to-emerald-500/20",
+}, {
+  id: "brightening",
+  nameEn: "Brightening",
+  nameAr: "التفتيح والإشراق",
+  descriptionEn: "Reveal radiant, glowing skin with vitamin C and brightening serums.",
+  descriptionAr: "اكشفي عن بشرة مشرقة ومتألقة مع فيتامين سي وسيرومات التفتيح.",
+  image: brighteningImage,
+  icon: Sun,
+  dbConcerns: ["Concern_Brightening", "Concern_Pigmentation"],
+  color: "from-yellow-500/20 to-orange-400/20",
+}, {
+  id: "sensitivity",
+  nameEn: "Sensitivity",
+  nameAr: "البشرة الحساسة",
+  descriptionEn: "Gentle, soothing formulas designed for delicate and reactive skin types.",
+  descriptionAr: "تركيبات لطيفة ومهدئة مصممة للبشرة الحساسة والمتفاعلة.",
+  image: sensitivityImage,
+  icon: Heart,
+  dbConcerns: ["Concern_Sensitivity", "Concern_Redness"],
+  color: "from-pink-400/20 to-rose-400/20",
+}, {
+  id: "sun-protection",
+  nameEn: "Sun Protection",
+  nameAr: "الحماية من الشمس",
+  descriptionEn: "Shield your skin from harmful UV rays with advanced SPF protection.",
+  descriptionAr: "احمي بشرتك من أشعة الشمس الضارة مع حماية متقدمة.",
+  image: sunProtectionImage,
+  icon: Umbrella,
+  dbConcerns: ["Concern_SunProtection"],
+  color: "from-yellow-400/20 to-amber-400/20",
+}, {
+  id: "dark-circles",
+  nameEn: "Dark Circles",
+  nameAr: "الهالات السوداء",
+  descriptionEn: "Target under-eye concerns with specialized eye care treatments.",
+  descriptionAr: "عالجي مشاكل منطقة العين مع علاجات متخصصة للعناية بالعين.",
+  image: darkCirclesImage,
+  icon: Eye,
+  dbConcerns: ["Concern_DarkCircles"],
+  color: "from-purple-400/20 to-violet-400/20",
+}];
+export default function SkinConcerns() {
+  const {
+    language,
+    isRTL,
+  } = useLanguage();
+  const isAr = language === "ar";
+
+  usePageMeta({
+    title: isAr ? "مشاكل البشرة | أسبر بيوتي" : "Skin Concerns | Asper Beauty",
+    description: isAr
+      ? "اكتشفي الحلول العلمية لمشاكل بشرتك: حب الشباب، الشيخوخة، الجفاف، والحساسية — بإشراف صيادلة متخصصين."
+      : "Find science-backed solutions for your skin concerns: acne, aging, dryness, sensitivity — curated by pharmacists.",
+    canonical: "/skin-concerns",
+  });
+
+  const [selectedConcern, setSelectedConcern] = useState<string | null>(null);
+  const [filteredProducts, setFilteredProducts] = useState<ShopifyProduct[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const activeConcern = skinConcerns.find((c) => c.id === selectedConcern);
+
+  useEffect(() => {
+    if (!selectedConcern) {
+      setFilteredProducts([]);
+      return;
+    }
+    const concern = skinConcerns.find((c) => c.id === selectedConcern);
+    if (!concern) return;
+
+    const load = async () => {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("products")
+          .select("*")
+          .in("primary_concern", concern.dbConcerns)
+          .eq("availability_status", "in_stock")
+          .order("bestseller_rank", { ascending: true, nullsFirst: false })
+          .limit(24);
+
+        if (error) {
+          console.error("Error filtering products:", error);
+          setFilteredProducts([]);
+          return;
+        }
+
+        const mapped: ShopifyProduct[] = (data ?? []).map((row: Record<string, unknown>) => ({
+          node: {
+            id: row.id,
+            title: row.title || row.name || "Unnamed Product",
+            description: row.description || "",
+            handle: row.handle || row.id,
+            vendor: row.brand || undefined,
+            productType: row.category || undefined,
+            tags: row.tags ?? [],
+            createdAt: row.created_at,
+            priceRange: {
+              minVariantPrice: { amount: String(row.price ?? 0), currencyCode: "JOD" },
+            },
+            images: {
+              edges: row.image_url
+                ? [{ node: { url: row.image_url, altText: row.title || row.name } }]
+                : [],
+            },
+            variants: {
+              edges: [{
+                node: {
+                  id: `${row.id}-default`,
+                  title: "Default",
+                  price: { amount: String(row.price ?? 0), currencyCode: "JOD" },
+                  compareAtPrice: null,
+                  availableForSale: true,
+                  selectedOptions: [],
+                },
+              }],
+            },
+            options: [],
+          },
+        }));
+        setFilteredProducts(mapped);
+      } catch (err) {
+        console.error("Error loading concern products:", err);
+        setFilteredProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, [selectedConcern]);
+  return (
+    <div className="min-h-screen bg-soft-ivory" dir={isRTL ? "rtl" : "ltr"}>
+      <Header />
+
+      <main className="pt-32 lg:pt-40">
+        {/* Hero Section */}
+        <section className="relative py-16 bg-gradient-to-b from-muted/50 to-soft-ivory overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-shiny-gold rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
+          </div>
+
+          <div className="luxury-container relative z-10">
+            <div className="text-center max-w-3xl mx-auto">
+              <span className="inline-block px-4 py-1.5 bg-shiny-gold/10 text-shiny-gold rounded-full text-sm font-medium mb-4 bg-gold text-rose-950">
+                {language === "ar" ? "العناية المستهدفة" : "Targeted Care"}
+              </span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-dark-charcoal mb-6">
+                {language === "ar"
+                  ? "تسوقي حسب مشكلة البشرة"
+                  : "Shop by Skin Concern"}
+              </h1>
+              <p className="font-body text-lg text-gray-600 max-w-2xl mx-auto">
+                {language === "ar"
+                  ? "اكتشفي المنتجات المثالية التي تستهدف احتياجات بشرتك الخاصة"
+                  : "Discover the perfect products that target your specific skin needs"}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Skin Concerns Grid */}
+        <section className="py-12 luxury-container">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {skinConcerns.map((concern) => {
+              const IconComponent = concern.icon;
+              const isActive = selectedConcern === concern.id;
+              return (
+                <button
+                  key={concern.id}
+                  onClick={() => {
+                    if (!isActive) {
+                      logSkinConcernClick(concern.id, concern.id);
+                    }
+                    setSelectedConcern(isActive ? null : concern.id);
+                  }}
+                  className={`group relative overflow-hidden rounded-2xl transition-all duration-500 ${
+                    isActive
+                      ? "ring-4 ring-shiny-gold shadow-xl scale-[1.02]"
+                      : "hover:shadow-lg hover:scale-[1.01]"
+                  }`}
+                >
+                  <div className="aspect-[4/3] relative">
+                    <img
+                      src={concern.image}
+                      alt={language === "ar" ? concern.nameAr : concern.nameEn}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${concern.color} to-black/60 transition-opacity duration-300`}
+                    />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white">
+                      <div
+                        className={`w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 transition-transform duration-300 ${
+                          isActive ? "scale-110" : "group-hover:scale-110"
+                        }`}
+                      >
+                        <IconComponent className="w-7 h-7 text-rose-950 bg-transparent" />
+                      </div>
+                      <h3 className="font-display text-xl text-center mb-2 md:text-4xl text-rose-950 bg-transparent font-extrabold">
+                        {language === "ar" ? concern.nameAr : concern.nameEn}
+                      </h3>
+                      <p className="font-body text-sm text-center line-clamp-2 text-rose-950">
+                        {language === "ar"
+                          ? concern.descriptionAr
+                          : concern.descriptionEn}
+                      </p>
+                    </div>
+                    {isActive && (
+                      <div className="absolute top-4 right-4 w-6 h-6 bg-shiny-gold rounded-full flex items-center justify-center">
+                        <svg
+                          className="w-4 h-4 text-black"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Filtered Products Section */}
+        {selectedConcern && (
+          <section className="py-12 bg-white">
+            <div className="luxury-container">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="font-display text-2xl md:text-3xl text-dark-charcoal">
+                    {language === "ar"
+                      ? `منتجات ${activeConcern?.nameAr}`
+                      : `${activeConcern?.nameEn} Products`}
+                  </h2>
+                  <p className="font-body text-gray-600 mt-2">
+                    {language === "ar"
+                      ? `${filteredProducts.length} منتج`
+                      : `${filteredProducts.length} products found`}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedConcern(null)}
+                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-dark-charcoal border border-gray-300 rounded-full hover:border-shiny-gold transition-colors"
+                >
+                  {language === "ar" ? "مسح الفلتر" : "Clear Filter"}
+                </button>
+              </div>
+
+              {loading
+                ? (
+                  <div className="flex items-center justify-center py-16">
+                    <Loader2 className="w-8 h-8 animate-spin text-shiny-gold" />
+                  </div>
+                )
+                : filteredProducts.length > 0
+                ? (
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    {filteredProducts.map((product) => (
+                      <ProductCard key={product.node.id} product={product} />
+                    ))}
+                  </div>
+                )
+                : (
+                  <div className="text-center py-16">
+                    <p className="font-body text-gray-500 text-lg">
+                      {language === "ar"
+                        ? "لم يتم العثور على منتجات لهذه الفئة"
+                        : "No products found for this concern"}
+                    </p>
+                    <Link
+                      to="/collections/skin-care"
+                      className="inline-block mt-4 px-6 py-3 bg-shiny-gold text-black font-medium rounded-full hover:bg-shiny-gold/90 transition-colors"
+                    >
+                      {language === "ar"
+                        ? "تصفحي جميع منتجات العناية بالبشرة"
+                        : "Browse All Skin Care"}
+                    </Link>
+                  </div>
+                )}
+            </div>
+          </section>
+        )}
+
+        {/* CTA Section */}
+        {!selectedConcern && (
+          <section className="py-16 bg-gradient-to-r from-dark-charcoal to-gray-800">
+            <div className="luxury-container text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
+                {language === "ar"
+                  ? "لم تجدي ما تبحثين عنه؟"
+                  : "Didn't find what you're looking for?"}
+              </h2>
+              <p className="font-body text-gray-300 mb-8 max-w-xl mx-auto">
+                {language === "ar"
+                  ? "تصفحي مجموعتنا الكاملة من منتجات العناية بالبشرة"
+                  : "Browse our complete collection of skincare products"}
+              </p>
+              <Link
+                to="/collections/skin-care"
+                className="inline-block px-8 py-4 bg-shiny-gold text-black font-display tracking-wide rounded-full hover:bg-white transition-colors"
+              >
+                {language === "ar"
+                  ? "تصفحي جميع المنتجات"
+                  : "View All Products"}
+              </Link>
+            </div>
+          </section>
+        )}
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
