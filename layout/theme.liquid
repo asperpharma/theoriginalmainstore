@@ -1,0 +1,137 @@
+{%- comment -%}
+  layout/theme.liquid — Asper Beauty Shop
+  Native Liquid theme. Replaces React-in-Liquid-wrapper approach.
+  Server-rendered, theme-editor friendly, RTL-ready.
+{%- endcomment -%}
+<!doctype html>
+<html
+  lang="{{ request.locale.iso_code }}"
+  dir="{% if request.locale.iso_code contains 'ar' %}rtl{% else %}ltr{% endif %}"
+  class="no-js"
+>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {%- comment -%} Theme color matches the burgundy brand anchor {%- endcomment -%}
+    <meta name="theme-color" content="#800020">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- comment -%} Favicon {%- endcomment -%}
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- comment -%} Preconnect to font and CDN origins {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- comment -%} Preload the two most-used font weights to avoid FOUT on hero {%- endcomment -%}
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    >
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    >
+
+    {%- comment -%} Three font families: display, body, Arabic {%- endcomment -%}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    >
+
+    <title>
+      {%- if page_title == blank -%}
+        {{ shop.name }}
+      {%- else -%}
+        {{ page_title }}{%- unless page_title contains shop.name %} — {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {%- if page_description != blank -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {%- comment -%} Open Graph + Twitter cards {%- endcomment -%}
+    <meta property="og:site_name" content="{{ shop.name }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page_title | default: shop.name | escape }}">
+    {%- if page_description != blank -%}
+      <meta property="og:description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:locale" content="{{ request.locale.iso_code }}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    {%- comment -%} JSON-LD WebSite schema for the homepage {%- endcomment -%}
+    {%- if template.name == 'index' -%}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": {{ shop.name | json }},
+          "url": {{ shop.url | json }},
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ shop.url }}/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      </script>
+    {%- endif -%}
+
+    {%- comment -%} Base stylesheet — design tokens + utility classes {%- endcomment -%}
+    {{ 'asper-base.css' | asset_url | stylesheet_tag }}
+
+    {%- comment -%} Shopify-required tag — analytics, polyfills, App scripts {%- endcomment -%}
+    {{ content_for_header }}
+
+    <script>
+      // Remove no-js class as soon as JS runs — used for progressive enhancement
+      document.documentElement.classList.remove('no-js');
+    </script>
+  </head>
+
+  <body class="template-{{ template.name }}">
+    <a class="sr-only" href="#main-content">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {%- comment -%} Header section — present on every page {%- endcomment -%}
+    {% sections 'header-group' %}
+
+    <main id="main-content" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {%- comment -%} Footer section — present on every page {%- endcomment -%}
+    {% sections 'footer-group' %}
+
+    {%- comment -%} Scroll-reveal observer — applies to any element with class "scroll-reveal" {%- endcomment -%}
+    <script>
+      (function () {
+        if (!('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '-80px' });
+
+        document.querySelectorAll('.scroll-reveal').forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
+  </body>
+</html>

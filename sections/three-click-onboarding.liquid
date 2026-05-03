@@ -1,0 +1,263 @@
+{%- comment -%}
+  sections/three-click-onboarding.liquid
+  Translated from src/components/home/ThreeClickOnboarding.tsx
+  Replaces React useState with vanilla JS. Selections build a query string and
+  navigate to /collections/all with filters applied.
+{%- endcomment -%}
+
+<section class="tco" data-section-id="{{ section.id }}">
+  <div class="tco__inner luxury-container">
+    <div class="tco__steps" data-tco-steps>
+      {%- assign step_index = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          <div
+            class="tco__step{% if step_index == 0 %} is-active{% endif %}"
+            data-step="{{ step_index }}"
+            data-step-id="{{ block.settings.step_id }}"
+            {{ block.shopify_attributes }}
+          >
+            <span class="tco__eyebrow">
+              {{ section.settings.eyebrow }}
+              <span class="tco__progress">
+                {{ forloop.index }} / {{ section.blocks.size }}
+              </span>
+            </span>
+            <h2 class="tco__heading">{{ block.settings.title }}</h2>
+
+            <div class="tco__options">
+              {%- for i in (1..4) -%}
+                {%- assign label_key  = 'option_' | append: i | append: '_label' -%}
+                {%- assign value_key  = 'option_' | append: i | append: '_value' -%}
+                {%- assign label = block.settings[label_key] -%}
+                {%- assign value = block.settings[value_key] -%}
+
+                {%- if label != blank -%}
+                  <button
+                    type="button"
+                    class="tco__option neu-raised group"
+                    data-step-value="{{ value | escape }}"
+                    data-next-step="{{ step_index | plus: 1 }}"
+                  >
+                    <span class="tco__option-content">
+                      <svg class="tco__option-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                      </svg>
+                      <span class="tco__option-label">{{ label }}</span>
+                    </span>
+                    <svg class="tco__option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M13 5l7 7-7 7"/>
+                    </svg>
+                    <span class="shimmer-overlay"></span>
+                  </button>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- assign step_index = step_index | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    var finalUrl  = {{ section.settings.completion_url | default: '/collections/all' | json }};
+    var steps     = section.querySelectorAll('.tco__step');
+    var selections = {};
+
+    section.addEventListener('click', function (e) {
+      var btn = e.target.closest('.tco__option');
+      if (!btn) return;
+
+      var step = btn.closest('.tco__step');
+      var stepId = step.getAttribute('data-step-id');
+      var value  = btn.getAttribute('data-step-value');
+      var nextIndex = parseInt(btn.getAttribute('data-next-step'), 10);
+
+      if (stepId && value) selections[stepId] = value;
+
+      step.classList.remove('is-active');
+
+      if (nextIndex < steps.length) {
+        steps[nextIndex].classList.add('is-active');
+      } else {
+        // Final step — build query and navigate
+        var params = new URLSearchParams(selections).toString();
+        window.location.href = finalUrl + (params ? ('?' + params) : '');
+      }
+    });
+  })();
+</script>
+
+<style>
+  .tco {
+    padding: var(--space-3xl) 0;
+    background: hsl(var(--asper-stone));
+    position: relative;
+    overflow: hidden;
+  }
+  .tco__inner { text-align: center; max-width: 840px; }
+
+  .tco__step {
+    display: none;
+    animation: asper-fade-up 0.6s var(--ease-luxury);
+  }
+  .tco__step.is-active { display: block; }
+
+  .tco__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: hsl(var(--polished-gold));
+    margin-bottom: var(--space-md);
+  }
+  .tco__progress {
+    padding: 2px 10px;
+    background: hsl(var(--polished-gold) / 0.1);
+    border: 1px solid hsl(var(--polished-gold) / 0.3);
+    border-radius: 100px;
+    letter-spacing: 0.15em;
+  }
+
+  .tco__heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    color: hsl(var(--asper-ink));
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0 0 var(--space-2xl) 0;
+  }
+  html[dir="rtl"] .tco__heading { font-family: var(--font-arabic); }
+
+  .tco__options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .tco__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: start;
+    padding: var(--space-xl);
+    background: hsl(var(--asper-stone-light));
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-luxury);
+  }
+  .tco__option:hover {
+    border-color: hsl(var(--polished-gold) / 0.4);
+    transform: translateY(-2px);
+  }
+
+  .tco__option-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .tco__option-icon {
+    color: hsl(var(--polished-gold));
+    flex-shrink: 0;
+  }
+  .tco__option-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: hsl(var(--asper-ink));
+    letter-spacing: -0.01em;
+  }
+  .tco__option-arrow {
+    color: hsl(var(--polished-gold));
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.3s var(--ease-luxury), transform 0.3s var(--ease-luxury);
+  }
+  .tco__option:hover .tco__option-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  html[dir="rtl"] .tco__option:hover .tco__option-arrow {
+    transform: translateX(0) scaleX(-1);
+  }
+
+  @media (max-width: 640px) {
+    .tco__options { grid-template-columns: 1fr; }
+    .tco { padding: var(--space-2xl) 0; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "3-Click Onboarding",
+  "tag": "section",
+  "class": "section-tco",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text",
+      "default": "The 3-Click Solution" },
+    { "type": "url",  "id": "completion_url", "label": "Final destination after last step",
+      "info": "Selections are appended as query parameters." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 4,
+      "settings": [
+        { "type": "text",     "id": "step_id", "label": "Step ID",
+          "info": "Used as the query param key, e.g. skin-type" },
+        { "type": "text",     "id": "title", "label": "Question" },
+        { "type": "header",   "content": "Options (up to 4)" },
+        { "type": "text", "id": "option_1_label", "label": "Option 1 label" },
+        { "type": "text", "id": "option_1_value", "label": "Option 1 value" },
+        { "type": "text", "id": "option_2_label", "label": "Option 2 label" },
+        { "type": "text", "id": "option_2_value", "label": "Option 2 value" },
+        { "type": "text", "id": "option_3_label", "label": "Option 3 label" },
+        { "type": "text", "id": "option_3_value", "label": "Option 3 value" },
+        { "type": "text", "id": "option_4_label", "label": "Option 4 label" },
+        { "type": "text", "id": "option_4_value", "label": "Option 4 value" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "3-Click Onboarding",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_id": "skin-type",
+            "title": "What is your skin profile?",
+            "option_1_label": "Oily / Acne-Prone", "option_1_value": "oily",
+            "option_2_label": "Dry / Dehydrated",  "option_2_value": "dry",
+            "option_3_label": "Sensitive / Redness","option_3_value": "sensitive",
+            "option_4_label": "Normal / Balanced", "option_4_value": "normal"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_id": "primary-concern",
+            "title": "Your primary focus?",
+            "option_1_label": "Anti-Aging & Firming",     "option_1_value": "anti-aging",
+            "option_2_label": "Brightening & Dark Spots", "option_2_value": "brightening",
+            "option_3_label": "Texture & Large Pores",    "option_3_value": "texture",
+            "option_4_label": "Barrier Repair",           "option_4_value": "barrier"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

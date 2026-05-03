@@ -1,0 +1,15 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "shop": { "type": "links", "settings": { "heading": "Shop" } },
+        "help": { "type": "links", "settings": { "heading": "Care" } }
+      },
+      "block_order": ["shop", "help"]
+    }
+  },
+  "order": ["footer"]
+}

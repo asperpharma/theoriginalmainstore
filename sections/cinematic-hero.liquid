@@ -1,0 +1,608 @@
+{%- comment -%}
+  sections/cinematic-hero.liquid
+  Translated from src/components/home/CinematicHero.tsx
+  Preserves: dark theme, video bg, gold accent lines, 3 rotated editorial cards,
+             animated stat counter, parallax via CSS scroll-driven animations.
+  Excluded: framer-motion (replaced with CSS + IntersectionObserver),
+            React Router Link (replaced with native anchors).
+{%- endcomment -%}
+
+<section
+  class="ash"
+  data-section-id="{{ section.id }}"
+  aria-labelledby="ash-heading-{{ section.id }}"
+>
+  {%- comment -%} ── Layer 0: Full-bleed background video or image ── {%- endcomment -%}
+  <div class="ash__media">
+    {%- if section.settings.hero_video != blank -%}
+      <video
+        class="ash__video"
+        autoplay
+        loop
+        muted
+        playsinline
+        disablepictureinpicture
+        {%- if section.settings.hero_image != blank -%}
+          poster="{{ section.settings.hero_image | image_url: width: 1920 }}"
+        {%- endif -%}
+      >
+        <source src="{{ section.settings.hero_video }}" type="video/mp4">
+      </video>
+    {%- elsif section.settings.hero_image != blank -%}
+      {{
+        section.settings.hero_image
+        | image_url: width: 1920
+        | image_tag:
+          class: 'ash__image',
+          loading: 'eager',
+          sizes: '100vw',
+          widths: '480, 768, 1024, 1440, 1920'
+      }}
+    {%- else -%}
+      <div class="ash__fallback"></div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ── Layer 1: Split gradient overlay (logical-property aware) ── {%- endcomment -%}
+  <div class="ash__overlay" aria-hidden="true"></div>
+
+  {%- comment -%} ── Gold accent lines top + bottom ── {%- endcomment -%}
+  <div class="ash__line ash__line--top" aria-hidden="true"></div>
+  <div class="ash__line ash__line--bottom" aria-hidden="true"></div>
+
+  {%- comment -%} ── Main content grid ── {%- endcomment -%}
+  <div class="ash__inner luxury-container">
+    {%- comment -%} LEFT — copy + CTAs + stats ── {%- endcomment -%}
+    <div class="ash__copy fade-up">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="ash__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      <h1 id="ash-heading-{{ section.id }}" class="ash__heading">
+        {{ section.settings.heading | newline_to_br }}
+      </h1>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="ash__subheading fade-up fade-up-delay-1">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      <div class="ash__ctas fade-up fade-up-delay-2">
+        {%- if section.settings.primary_cta_label != blank -%}
+          <a
+            href="{{ section.settings.primary_cta_url | default: '#' }}"
+            class="btn-primary group ash__cta-primary"
+          >
+            <span>{{ section.settings.primary_cta_label }}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="shimmer-overlay"></span>
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_cta_label != blank -%}
+          <a
+            href="{{ section.settings.secondary_cta_url | default: '#' }}"
+            class="btn-gold ash__cta-secondary"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 2v13M9 5l3-3 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{{ section.settings.secondary_cta_label }}</span>
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ── Stats row — 3 metrics ── {%- endcomment -%}
+      <div class="ash__stats fade-up fade-up-delay-3">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="ash__stat" {{ block.shopify_attributes }}>
+              <span class="ash__stat-value" data-target="{{ block.settings.value | escape }}">
+                {{ block.settings.display_value }}
+              </span>
+              <span class="ash__stat-label">{{ block.settings.label }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} RIGHT — three rotated editorial cards stacked ── {%- endcomment -%}
+    <div class="ash__cards" aria-hidden="true">
+      {%- assign card_index = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'editorial_card' -%}
+          <div
+            class="ash__card ash__card--{{ card_index }}"
+            style="--rot: {{ block.settings.rotation }}deg; --z: {{ forloop.index }};"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 520
+                | image_tag:
+                  alt: block.settings.alt,
+                  loading: 'eager',
+                  sizes: '(max-width: 768px) 200px, 260px',
+                  widths: '200, 260, 520'
+              }}
+            {%- endif -%}
+
+            {%- if block.settings.label != blank -%}
+              <div class="ash__card-label">
+                <span class="ash__card-dot"></span>
+                <span class="ash__card-text">{{ block.settings.label }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+          {%- assign card_index = card_index | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ── Stat counter — vanilla JS, no React ── {%- endcomment -%}
+<script>
+  (function () {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    var stats = section.querySelectorAll('[data-target]');
+    if (!stats.length || !('IntersectionObserver' in window)) return;
+
+    function animateCount(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+      var display = el.textContent.trim();
+      var hasComma = display.indexOf(',') !== -1;
+      var suffix = (display.match(/[+%]/) || [''])[0];
+      var duration = 1400;
+      var start = performance.now();
+      function step(now) {
+        var p = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var v = Math.round(eased * target);
+        var formatted = hasComma && v >= 1000 ? v.toLocaleString('en-US') : v;
+        el.textContent = formatted + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    stats.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+<style>
+  /* ── Cinematic Hero ─────────────────────────────────────────────────────── */
+  .ash {
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    background: #0a0505;
+    overflow: hidden;
+    color: #f5e8d3;
+  }
+
+  .ash__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .ash__video,
+  .ash__image,
+  .ash__fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .ash__fallback {
+    background: linear-gradient(135deg, #0a0505 0%, #1a0808 50%, #2a0d0d 100%);
+  }
+
+  .ash__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        to right,
+        rgba(10, 5, 5, 0.92) 0%,
+        rgba(10, 5, 5, 0.78) 45%,
+        rgba(10, 5, 5, 0.30) 65%,
+        rgba(10, 5, 5, 0.10) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(10, 5, 5, 0.20) 0%,
+        rgba(10, 5, 5, 0.10) 50%,
+        rgba(10, 5, 5, 0.75) 100%
+      );
+  }
+  html[dir="rtl"] .ash__overlay {
+    background:
+      linear-gradient(
+        to left,
+        rgba(10, 5, 5, 0.92) 0%,
+        rgba(10, 5, 5, 0.78) 45%,
+        rgba(10, 5, 5, 0.30) 65%,
+        rgba(10, 5, 5, 0.10) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(10, 5, 5, 0.20) 0%,
+        rgba(10, 5, 5, 0.10) 50%,
+        rgba(10, 5, 5, 0.75) 100%
+      );
+  }
+
+  .ash__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    z-index: 30;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--polished-gold) / 0.5),
+      transparent
+    );
+  }
+  .ash__line--top    { top: 0; }
+  .ash__line--bottom { bottom: 0; opacity: 0.7; }
+
+  .ash__inner {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 100dvh;
+    gap: var(--space-2xl);
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  /* ── Copy column ────────────────────────────────────────── */
+  .ash__copy {
+    position: relative;
+    max-width: 600px;
+  }
+  .ash__eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: hsl(var(--polished-gold));
+    margin-bottom: var(--space-lg);
+    padding: 6px 14px;
+    border: 1px solid hsl(var(--polished-gold) / 0.3);
+    border-radius: 100px;
+    background: rgba(197, 160, 40, 0.05);
+  }
+  .ash__heading {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #f5e8d3;
+    margin: 0 0 var(--space-lg) 0;
+  }
+  html[dir="rtl"] .ash__heading { font-family: var(--font-arabic); }
+
+  .ash__subheading {
+    font-family: var(--font-body);
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.7;
+    color: rgba(245, 232, 211, 0.7);
+    max-width: 480px;
+    margin: 0 0 var(--space-xl) 0;
+  }
+  html[dir="rtl"] .ash__subheading { font-family: var(--font-arabic); }
+
+  .ash__ctas {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-2xl);
+  }
+  .ash__cta-primary {
+    position: relative;
+    overflow: hidden;
+  }
+  .ash__cta-secondary {
+    color: hsl(var(--polished-gold));
+    border-color: hsl(var(--polished-gold) / 0.5);
+  }
+  .ash__cta-secondary:hover {
+    background: hsl(var(--polished-gold));
+    color: #0a0505;
+  }
+
+  /* ── Stats row ──────────────────────────────────────────── */
+  .ash__stats {
+    display: flex;
+    gap: var(--space-2xl);
+    align-items: flex-start;
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(197, 160, 40, 0.18);
+  }
+  .ash__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ash__stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 28px);
+    color: hsl(var(--polished-gold));
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .ash__stat-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(245, 232, 211, 0.5);
+  }
+
+  /* ── Editorial cards column ─────────────────────────────── */
+  .ash__cards {
+    position: relative;
+    height: 100%;
+    min-height: 600px;
+  }
+  .ash__card {
+    position: absolute;
+    width: 240px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      10px 10px 20px rgba(0, 0, 0, 0.5),
+      -6px -6px 16px rgba(255, 255, 255, 0.04);
+    transform: rotate(var(--rot)) translateY(40px);
+    opacity: 0;
+    z-index: var(--z);
+    transition:
+      opacity 1s var(--ease-luxury),
+      transform 0.6s var(--ease-luxury);
+    animation: ash-card-in 1s var(--ease-luxury) forwards;
+  }
+  .ash__card:nth-of-type(1) { animation-delay: 0.5s; }
+  .ash__card:nth-of-type(2) { animation-delay: 0.65s; }
+  .ash__card:nth-of-type(3) { animation-delay: 0.80s; }
+  .ash__card:hover {
+    transform: rotate(0) scale(1.03);
+    z-index: 10;
+  }
+  .ash__card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  /* Position the three cards in a layered stack */
+  .ash__card--0 { top: 5%;  left: 8%;  }
+  .ash__card--1 { top: 35%; right: 8%; }
+  .ash__card--2 { top: 62%; left: 50%; margin-left: -130px; }
+  html[dir="rtl"] .ash__card--0 { left: auto; right: 8%; }
+  html[dir="rtl"] .ash__card--1 { right: auto; left: 8%; }
+
+  .ash__card-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 160, 40, 0.3);
+    border-radius: 100px;
+  }
+  .ash__card-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: hsl(var(--polished-gold));
+    animation: asper-pulse-dot 2s ease-in-out infinite;
+  }
+  .ash__card-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: hsl(var(--polished-gold));
+    font-family: var(--font-body);
+  }
+
+  @keyframes ash-card-in {
+    from { opacity: 0; transform: rotate(var(--rot)) translateY(40px); }
+    to   { opacity: 1; transform: rotate(var(--rot)) translateY(0); }
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .ash__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+    .ash__cards { display: none; }
+    .ash__heading { font-size: clamp(32px, 8vw, 48px); }
+    .ash__stats { gap: var(--space-lg); flex-wrap: wrap; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cinematic Hero",
+  "tag": "section",
+  "class": "section-cinematic-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "video_url",
+      "id": "hero_video",
+      "label": "Background video URL (mp4)",
+      "accept": ["youtube", "vimeo", "mp4"],
+      "info": "Full-bleed autoplay video. Leave empty to fall back to image."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Background image (poster + fallback)"
+    },
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Pharmacist Curated · Authentic Quality"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main heading",
+      "default": "Where Science\nMeets Sanctuary"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Pharmacist-curated skincare and beauty for the modern ritual. From clinical actives to everyday essentials."
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_label",
+      "label": "Label",
+      "default": "Shop the Edit"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_label",
+      "label": "Label",
+      "default": "Begin Consultation"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_url",
+      "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Numeric value (for animation)",
+          "info": "Numbers only — used for the count-up animation"
+        },
+        {
+          "type": "text",
+          "id": "display_value",
+          "label": "Display value",
+          "info": "What's shown initially, e.g. 6,500+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    },
+    {
+      "type": "editorial_card",
+      "name": "Editorial card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "e.g. Pharmacist Picks, Morning Ritual"
+        },
+        {
+          "type": "range",
+          "id": "rotation",
+          "label": "Rotation (deg)",
+          "min": -10,
+          "max": 10,
+          "step": 1,
+          "default": 0,
+          "unit": "°"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cinematic Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "6500", "display_value": "6,500+", "label": "Products" } },
+        { "type": "stat", "settings": { "value": "50", "display_value": "50+", "label": "Brands" } },
+        { "type": "stat", "settings": { "value": "100", "display_value": "100%", "label": "Pharmacist-Curated" } },
+        { "type": "editorial_card", "settings": { "label": "Pharmacist Picks", "rotation": -6 } },
+        { "type": "editorial_card", "settings": { "label": "Morning Ritual", "rotation": 4 } },
+        { "type": "editorial_card", "settings": { "label": "Authentic Quality", "rotation": -1 } }
+      ]
+    }
+  ]
+}
+{% endschema %}
