@@ -35,7 +35,7 @@ const BEAUTY_ASSISTANT_URL = `${SUPABASE_URL}/functions/v1/beauty-assistant`;
 const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY") || "";
 const CLAUDE_MODEL = "claude-sonnet-4-6";
 const ENABLE_PROJECT_THREADS = Deno.env.get("ENABLE_PROJECT_THREADS") === "true";
-const GITHUB_REPO = Deno.env.get("GITHUB_REPO") || "Asper-Beauty-Shop/asperbeauty.understand-project";
+const GITHUB_REPO = Deno.env.get("GITHUB_REPO") || "asperpharma/theoriginalmainstore";
 const GITHUB_TOKEN = Deno.env.get("GITHUB_TOKEN") || "";
 // AGENTIC_MODE=false → Classic developer terminal (13 commands + inline keyboards)
 // default true → shop AI concierge mode
@@ -1900,6 +1900,66 @@ async function handleCallback(chatId: string, callbackQueryId: string, data: str
   }
 }
 
+// ─── WEBHOOK MANAGEMENT ───────────────────────────────────────
+
+async function cmdSetWebhook(chatId: string, url: string) {
+  if (!isAdmin(chatId)) return send(chatId, "🔒 Admin only.");
+  if (!url) {
+    try {
+      const info = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getWebhookInfo`);
+      if (!info.ok) return send(chatId, `❌ Telegram API error: HTTP ${info.status}`);
+      const data = await info.json();
+      const wh = data.result ?? {};
+      return send(chatId,
+        `🔗 <b>Webhook Status</b>\n\n` +
+        `URL: <code>${esc(wh.url || "(not set)")}</code>\n` +
+        `Pending: <b>${wh.pending_update_count ?? 0}</b>\n` +
+        `Last error: ${wh.last_error_message ? esc(wh.last_error_message) : "none"}\n\n` +
+        `Set webhook: <code>/setwebhook https://your-project.supabase.co/functions/v1/telegram-bot</code>`
+      );
+    } catch (err) {
+      return send(chatId, `❌ Could not reach Telegram API: ${esc(String(err).slice(0, 200))}`);
+    }
+  }
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/setWebhook`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, allowed_updates: ["message", "callback_query"] }),
+    });
+    if (!res.ok) return send(chatId, `❌ Telegram API error: HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.ok) {
+      await send(chatId, `✅ <b>Webhook set!</b>\n\n🔗 <code>${esc(url)}</code>`);
+    } else {
+      await send(chatId, `❌ Failed: ${esc(data.description ?? String(data))}`);
+    }
+  } catch (err) {
+    await send(chatId, `❌ Could not reach Telegram API: ${esc(String(err).slice(0, 200))}`);
+  }
+}
+
+async function cmdDeleteWebhook(chatId: string) {
+  if (!isAdmin(chatId)) return send(chatId, "🔒 Admin only.");
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/deleteWebhook`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ drop_pending_updates: true }),
+    });
+    if (!res.ok) return send(chatId, `❌ Telegram API error: HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.ok) {
+      await send(chatId, "✅ <b>Webhook deleted.</b>\nBot will stop receiving updates until a new webhook is set.");
+    } else {
+      await send(chatId, `❌ Failed: ${esc(data.description ?? String(data))}`);
+    }
+  } catch (err) {
+    await send(chatId, `❌ Could not reach Telegram API: ${esc(String(err).slice(0, 200))}`);
+  }
+}
+
 // ─── BOT PROFILE SETUP ────────────────────────────────────────
 
 async function cmdSetupProfile(chatId: string) {
@@ -1976,6 +2036,8 @@ function getHelp(admin: boolean): string {
     msg += `  /sync — Sync Shopify catalog\n`;
     msg += `  /health — System health check\n`;
     msg += `  /functions — Edge functions list\n`;
+    msg += `  /setwebhook [url] — View or set Telegram webhook\n`;
+    msg += `  /deletewebhook — Remove Telegram webhook\n`;
     msg += `  /setup-profile — Update bot profile\n\n`;
     msg += `📢 <b>Marketing</b>\n`;
     msg += `  /broadcast &lt;msg&gt; — Draft broadcast\n`;
@@ -2197,6 +2259,8 @@ Deno.serve(async (req) => {
     case "/sync": await cmdSync(chatId); return new Response("OK");
     case "/health": case "❤️": await cmdHealth(chatId); return new Response("OK");
     case "/functions": await cmdEdgeFunctions(chatId); return new Response("OK");
+    case "/setwebhook": await cmdSetWebhook(chatId, args); return new Response("OK");
+    case "/deletewebhook": await cmdDeleteWebhook(chatId); return new Response("OK");
 
     // ─── Shopping (extended) ───
     case "/concern":  await cmdConcern(chatId, args); return new Response("OK");
