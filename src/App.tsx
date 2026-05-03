@@ -89,6 +89,7 @@ const LabTools = lazy(() => import("./pages/LabTools"));
 const Intelligence = lazy(() => import("./pages/Intelligence"));
 const AdminEnrichment = lazy(() => import("./pages/AdminEnrichment"));
 const AdminConnections = lazy(() => import("./pages/AdminConnections"));
+const DesignIntelligence = lazy(() => import("./pages/DesignIntelligence/DesignIntelligence"));
 
 const BeautyAssistant = lazy(() =>
   import("@/components/BeautyAssistant").then((m) => ({ default: m.BeautyAssistant })),
@@ -207,6 +208,7 @@ const App = () => {
                   <Route path="/admin/brand-showcase" element={<RequireAdmin><BrandShowcase /></RequireAdmin>} />
                   <Route path="/admin/enrichment" element={<RequireAdmin><AdminEnrichment /></RequireAdmin>} />
                   <Route path="/admin/connections" element={<RequireAdmin><AdminConnections /></RequireAdmin>} />
+                  <Route path="/design-intelligence" element={<DesignIntelligence />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
                   </Suspense>
