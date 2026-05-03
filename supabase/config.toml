@@ -1,0 +1,24 @@
+project_id = "vhgwvfedgfmcixhdyttt"
+
+[auth]
+# Enable HaveIBeenPwned leaked password protection
+password_min_length = 8
+password_required_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
+
+[auth.password]
+hibp_enabled = true
+
+[functions.sync-shopify-catalog]
+verify_jwt = false
+
+[functions.concierge-tip]
+verify_jwt = false
+
+[functions.asper-intelligence]
+verify_jwt = false
+
+[functions.ai-product-search]
+verify_jwt = false
+
+[functions.gemini-tts]
+verify_jwt = false
