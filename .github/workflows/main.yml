@@ -1,0 +1,8 @@
+            - name: Run Authzed Test Server
+  # You may pin to the exact commit or the version.
+  # uses: authzed/action-testserver@f8a5a3c34f6d8ef0e64577c802d39728bdf406eb
+  uses: authzed/action-testserver@v3
+  with:
+    # Version of `zed testserver` to use
+    version: # optional, default is latest
+          
