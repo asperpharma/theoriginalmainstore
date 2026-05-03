@@ -1,0 +1,12 @@
+{
+  "general": {
+    "404": {
+      "title": "الصفحة غير موجودة",
+      "subtext": "الصفحة التي طلبتها غير موجودة.",
+      "continue_shopping": "مواصلة التسوق"
+    },
+    "password_page": {
+      "opening_soon": "قريباً"
+    }
+  }
+}
