@@ -68,7 +68,9 @@ export function useAutoAdvance(total: number) {
         startRef.current = null;
       }
 
-      rafRef.current = requestAnimationFrame(tick);
+      if (!cancelled) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
     };
 
     rafRef.current = requestAnimationFrame(tick);

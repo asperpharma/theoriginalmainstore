@@ -11,6 +11,7 @@ interface PillarCardProps {
 }
 
 const STAGGER_MS = 120;
+const INITIAL_DELAY_MS = 200;
 
 /**
  * Right-side animated card that presents a single pillar.
@@ -30,7 +31,7 @@ export function PillarCard({ pillar, animKey }: PillarCardProps) {
           next[i] = true;
           return next;
         });
-      }, 200 + i * STAGGER_MS),
+      }, INITIAL_DELAY_MS + i * STAGGER_MS),
     );
     return () => timers.forEach(clearTimeout);
   }, [animKey, pillar.points.length]);
