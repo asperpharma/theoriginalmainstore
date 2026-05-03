@@ -1,0 +1,54 @@
+name: Sync API Documentation
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "supabase/functions/**/*.ts"
+      - "src/hooks/use*.ts"
+      - "src/integrations/**/*.ts"
+      - "src/lib/*Mapping*.ts"
+
+jobs:
+  doc-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+
+            This PR modifies API endpoints or data hooks. Please:
+
+            1. Review changes in supabase/functions/ and src/hooks/
+            2. Update API documentation in CLAUDE.md (Edge Functions table)
+            3. Check webhook URLs are still accurate
+            4. Document any new or changed Supabase Edge Function endpoints
+            5. Update channel webhook URLs if routes changed
+
+            Edge Functions are at: https://vhgwvfedgfmcixhdyttt.supabase.co/functions/v1/{function-name}
+            Commit any documentation updates to this PR branch.
+
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Bash(git:*)"
+
+      - name: Capture documentation changes
+        run: git diff > api-docs-changes.diff || true
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: api-docs-diff-${{ github.event.pull_request.number }}
+          path: api-docs-changes.diff
+          retention-days: 14
+          if-no-files-found: ignore
