@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Asper Beauty — Instagram Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1080px; height: 1080px; overflow: hidden; font-family: 'Montserrat', sans-serif; }
+
+  .canvas {
+    width: 1080px; height: 1080px;
+    background: linear-gradient(145deg, #F8F8FF 0%, #f0ede8 50%, #F8F8FF 100%);
+    position: relative;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+
+  /* Neumorphic frame */
+  .inner-frame {
+    width: 920px; height: 920px;
+    border-radius: 40px;
+    background: #F8F8FF;
+    box-shadow: 20px 20px 40px rgba(0,0,0,0.08), -20px -20px 40px rgba(255,255,255,0.9);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gold accent lines */
+  .gold-top { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #C5A028, transparent); }
+  .gold-bottom { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #C5A028, transparent); }
+
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: #C5A028; margin-bottom: 24px;
+  }
+
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; font-weight: 700;
+    color: #800020; line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .subhead {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px; font-weight: 400;
+    color: #333; max-width: 600px;
+    line-height: 1.6; margin-bottom: 40px;
+  }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 20px 48px; border-radius: 12px;
+    background: #800020; color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    box-shadow: 8px 8px 16px rgba(128,0,32,0.3), -4px -4px 10px rgba(255,255,255,0.6);
+  }
+
+  .seal {
+    position: absolute; bottom: 40px; right: 40px;
+    width: 60px; height: 60px;
+    border: 1.5px solid #C5A028;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .seal svg { width: 28px; height: 28px; color: #C5A028; }
+
+  .logo {
+    position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 600;
+    color: #800020; letter-spacing: 0.15em;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="inner-frame">
+    <div class="gold-top"></div>
+    <div class="gold-bottom"></div>
+    <div class="logo">ASPER BEAUTY</div>
+    <div class="eyebrow">Pharmacist-Curated Collection</div>
+    <div class="headline">Where Science<br>Meets Beauty</div>
+    <div class="subhead">10,000+ premium dermocosmetic products from 350+ trusted brands. Clinically vetted, beautifully delivered.</div>
+    <div class="cta">Shop Now →</div>
+    <div class="seal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2L14.5 7.5L20 9L15.5 13L17 18.5L12 15.5L7 18.5L8.5 13L4 9L9.5 7.5L12 2Z"/>
+      </svg>
+    </div>
+  </div>
+</div>
+</body>
+</html>
