@@ -1,0 +1,125 @@
+{
+  "name": "Asper Beauty Homepage",
+  "sections": {
+    "cinematic-hero": {
+      "type": "cinematic-hero",
+      "settings": {
+        "eyebrow": "Pharmacist Curated · Authentic Quality",
+        "heading": "Where Science\nMeets Sanctuary",
+        "subheading": "Pharmacist-curated skincare and beauty for the modern ritual. From clinical actives to everyday essentials.",
+        "primary_cta_label": "Shop the Edit",
+        "primary_cta_url": "/collections/all",
+        "secondary_cta_label": "Begin Consultation",
+        "secondary_cta_url": "/pages/consultation"
+      },
+      "blocks": {
+        "stat-1": { "type": "stat", "settings": { "value": "6500", "display_value": "6,500+", "label": "Products" } },
+        "stat-2": { "type": "stat", "settings": { "value": "50",   "display_value": "50+",    "label": "Brands" } },
+        "stat-3": { "type": "stat", "settings": { "value": "100",  "display_value": "100%",   "label": "Pharmacist-Curated" } },
+        "card-1": { "type": "editorial_card", "settings": { "label": "Pharmacist Picks",  "rotation": -6 } },
+        "card-2": { "type": "editorial_card", "settings": { "label": "Morning Ritual",    "rotation": 4 } },
+        "card-3": { "type": "editorial_card", "settings": { "label": "Authentic Quality", "rotation": -1 } }
+      },
+      "block_order": ["stat-1", "stat-2", "stat-3", "card-1", "card-2", "card-3"]
+    },
+    "science-meets-elegance": {
+      "type": "science-meets-elegance-split",
+      "blocks": {
+        "dr-sami": {
+          "type": "persona",
+          "settings": {
+            "icon": "stethoscope",
+            "pill_label": "Dr. Sami's Domain",
+            "eyebrow": "The Clinical Side",
+            "heading": "Discover Your Ideal Serum",
+            "body": "Pharmacist-curated formulas backed by clinical evidence.",
+            "cta_label": "Browse Clinical",
+            "link": "/collections/clinical-serums"
+          }
+        },
+        "ms-zain": {
+          "type": "persona",
+          "settings": {
+            "icon": "sparkles",
+            "pill_label": "Ms. Zain's Domain",
+            "eyebrow": "The Aesthetic Side",
+            "heading": "Curate Your Daily Ritual",
+            "body": "Beauty essentials chosen for the modern Levantine routine.",
+            "cta_label": "Browse Beauty",
+            "link": "/collections/beauty"
+          }
+        }
+      },
+      "block_order": ["dr-sami", "ms-zain"]
+    },
+    "three-click-onboarding": {
+      "type": "three-click-onboarding",
+      "settings": {
+        "eyebrow": "The 3-Click Solution",
+        "completion_url": "/collections/all"
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "step_id": "skin-type",
+            "title": "What is your skin profile?",
+            "option_1_label": "Oily / Acne-Prone",  "option_1_value": "oily",
+            "option_2_label": "Dry / Dehydrated",   "option_2_value": "dry",
+            "option_3_label": "Sensitive / Redness","option_3_value": "sensitive",
+            "option_4_label": "Normal / Balanced",  "option_4_value": "normal"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "step_id": "primary-concern",
+            "title": "Your primary focus?",
+            "option_1_label": "Anti-Aging & Firming",     "option_1_value": "anti-aging",
+            "option_2_label": "Brightening & Dark Spots", "option_2_value": "brightening",
+            "option_3_label": "Texture & Large Pores",    "option_3_value": "texture",
+            "option_4_label": "Barrier Repair",           "option_4_value": "barrier"
+          }
+        }
+      },
+      "block_order": ["step-1", "step-2"]
+    },
+    "usp-bar": {
+      "type": "usp-bar",
+      "blocks": {
+        "samples":  { "type": "usp", "settings": { "icon": "gift",  "title": "2 Free Samples",   "subtitle": "With every order" } },
+        "delivery": { "type": "usp", "settings": { "icon": "truck", "title": "Fast Delivery",    "subtitle": "3–6 business days" } },
+        "deals":    { "type": "usp", "settings": { "icon": "tag",   "title": "Free Beauty Deals","subtitle": "Exclusive offers weekly" } }
+      },
+      "block_order": ["samples", "delivery", "deals"]
+    },
+    "bestsellers": {
+      "type": "product-slider",
+      "settings": {
+        "subtitle": "Most Loved",
+        "heading": "Bestsellers — Niche Approved",
+        "products_to_show": 8,
+        "cta_label": "Browse the Edit",
+        "cta_url": "/collections/bestsellers"
+      }
+    },
+    "new-arrivals": {
+      "type": "product-slider",
+      "settings": {
+        "subtitle": "New Arrivals",
+        "heading": "Just Landed! What's New",
+        "products_to_show": 8,
+        "cta_label": "See All New Arrivals",
+        "cta_url": "/collections/new-arrivals"
+      }
+    }
+  },
+  "order": [
+    "cinematic-hero",
+    "science-meets-elegance",
+    "three-click-onboarding",
+    "usp-bar",
+    "bestsellers",
+    "new-arrivals"
+  ]
+}

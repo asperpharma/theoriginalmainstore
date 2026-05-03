@@ -1,0 +1,213 @@
+{%- comment -%}
+  sections/header.liquid
+  Site shell — present on every page.
+  Sticky transparent header that turns solid on scroll.
+{%- endcomment -%}
+
+<header class="ahd" data-section-id="{{ section.id }}">
+  <div class="ahd__inner luxury-container">
+    <a href="{{ routes.root_url }}" class="ahd__logo">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 200 | image_tag: alt: shop.name, class: 'ahd__logo-img' }}
+      {%- else -%}
+        <span class="ahd__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="ahd__nav" aria-label="Primary">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" class="ahd__nav-link{% if link.active %} is-active{% endif %}">
+          {{ link.title }}
+        </a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="ahd__actions">
+      {%- comment -%} Locale switcher (en / ar) {%- endcomment -%}
+      {%- if shop.published_locales.size > 1 -%}
+        <form method="post" action="/localization" class="ahd__locale-form">
+          <input type="hidden" name="_method" value="put">
+          <input type="hidden" name="return_to" value="{{ request.path }}">
+          {%- for locale in shop.published_locales -%}
+            <button
+              type="submit"
+              name="locale_code"
+              value="{{ locale.iso_code }}"
+              class="ahd__locale-btn{% if locale.iso_code == request.locale.iso_code %} is-active{% endif %}"
+            >
+              {{ locale.iso_code | upcase }}
+            </button>
+          {%- endfor -%}
+        </form>
+      {%- endif -%}
+
+      <a href="{{ routes.search_url }}" class="ahd__icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+      </a>
+
+      <a href="{{ routes.account_url }}" class="ahd__icon-btn" aria-label="Account">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+
+      <a href="{{ routes.cart_url }}" class="ahd__icon-btn ahd__cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="ahd__cart-count">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  (function () {
+    var header = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!header) return;
+
+    function update() {
+      header.classList.toggle('is-scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+
+<style>
+  .ahd {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: transparent;
+    transition: background 0.3s var(--ease-luxury), border-color 0.3s var(--ease-luxury);
+    border-bottom: 1px solid transparent;
+  }
+  .ahd.is-scrolled {
+    background: hsl(var(--asper-stone) / 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: hsl(var(--polished-gold) / 0.2);
+  }
+
+  .ahd__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-xl);
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+  }
+
+  .ahd__logo { text-decoration: none; }
+  .ahd__logo-text {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: hsl(var(--burgundy));
+    letter-spacing: 0.05em;
+  }
+  .ahd__logo-img { height: 40px; width: auto; }
+
+  .ahd__nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+  }
+  .ahd__nav-link {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: hsl(var(--asper-ink));
+    transition: color 0.3s var(--ease-luxury);
+    text-decoration: none;
+  }
+  .ahd__nav-link:hover,
+  .ahd__nav-link.is-active {
+    color: hsl(var(--polished-gold));
+  }
+
+  .ahd__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .ahd__icon-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--asper-ink));
+    transition: background 0.3s var(--ease-luxury), color 0.3s var(--ease-luxury);
+    text-decoration: none;
+  }
+  .ahd__icon-btn:hover {
+    background: hsl(var(--polished-gold) / 0.1);
+    color: hsl(var(--polished-gold));
+  }
+  .ahd__cart-count {
+    position: absolute;
+    top: 4px;
+    inset-inline-end: 4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 100px;
+    background: hsl(var(--burgundy));
+    color: hsl(var(--polished-white));
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ahd__locale-form {
+    display: flex;
+    gap: 4px;
+    margin: 0;
+  }
+  .ahd__locale-btn {
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: hsl(var(--asper-ink-muted));
+    transition: all 0.3s var(--ease-luxury);
+    cursor: pointer;
+  }
+  .ahd__locale-btn.is-active {
+    color: hsl(var(--polished-gold));
+    border-color: hsl(var(--polished-gold) / 0.3);
+  }
+  .ahd__locale-btn:hover { color: hsl(var(--polished-gold)); }
+
+  @media (max-width: 900px) {
+    .ahd__nav { display: none; }
+    .ahd__inner { grid-template-columns: auto auto; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "link_list",    "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+# ---------------------------------------------------------------------------
+# .shopifyignore — files/directories NOT uploaded by `shopify theme push`
+# ---------------------------------------------------------------------------
+
+# Node
+node_modules/
+.npmrc
+package.json
+package-lock.json
+
+# Source code (compiled output goes to assets/)
+src/
+index.html
+
+# Build artefacts (dist/ is the default Vite output; assets/ holds theme files)
+dist/
+dist-ssr/
+build/
+
+# Config & tooling
+vite.config.ts
+vite.shopify.config.ts
+tailwind.config.ts
+postcss.config.js
+tsconfig*.json
+eslint.config.js
+components.json
+vitest.config.ts
+playwright.config.ts
+vercel.json
+.hintrc
+
+# Supabase & API
+supabase/
+api/
+
+# Scripts & data
+scripts/
+data/
+notebooks/
+evals/
+docs/
+e2e/
+test-results/
+"Orgnized Products"/
+
+# Documentation & CI
+*.md
+AGENTS.md
+CLAUDE.md
+CUSTOM_KNOWLEDGE.md
+ONBOARDING.md
+SECURITY.md
+SETUP_SCRIPT.md
+APPLY_TO_MAIN_SITE.md
+README.md
+.github/
+.azure/
+.claude/
+.devcontainer/
+.lovable/
+.vscode/
+
+# Miscellaneous
+.env*
+env.*.example
+*.local
+*.log
+catalog-sync.sql
+Supabase_files/
+understand-project/
+understand-project.md
+"Add workflow-init skill for scaffolding Vercel Workflow Introduces a "/
