@@ -1,0 +1,12 @@
+{
+  "general": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you requested does not exist.",
+      "continue_shopping": "Continue shopping"
+    },
+    "password_page": {
+      "opening_soon": "Opening soon"
+    }
+  }
+}
